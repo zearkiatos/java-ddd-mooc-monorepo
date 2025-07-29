@@ -1,10 +1,12 @@
-.PHONY: all
+.PONY: all build test
+
 all: build
 
-.PHONY: build
 build:
-	@./gradlew assemble --warning-mode all
+	@./gradlew build --warning-mode all
 
-.PHONY: test
 test:
-	@./gradlew check --warning-mode all
+	@./gradlew test --warning-mode all
+
+run:
+	@.gradlew :run
