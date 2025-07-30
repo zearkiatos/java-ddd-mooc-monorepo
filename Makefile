@@ -3,10 +3,16 @@
 all: build
 
 build:
-	@./gradlew build --warning-mode all
+	@./gradlew assemble --warning-mode all
 
 test:
-	@./gradlew test --warning-mode all
+	@./gradlew check --warning-mode all
 
 run:
-	@.gradlew :run
+	@./gradlew :run
+
+set-env:
+	sdk env
+
+install-env:
+	sdk env install
