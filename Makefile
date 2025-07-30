@@ -5,6 +5,9 @@ all: build
 build:
 	@./gradlew assemble --warning-mode all
 
+rebuild:
+	@./gradlew clean build
+
 test:
 	@./gradlew check --warning-mode all
 
