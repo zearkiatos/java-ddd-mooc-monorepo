@@ -19,13 +19,17 @@ allprojects {
     implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
     implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.19'
 
-    // Test
+    // Test - JUnit 5 + JUnit 4 support
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    testImplementation 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.5.1'
   }
 
   test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+      includeEngines 'junit-jupiter', 'junit-vintage'
+    }
 
     testLogging {
       events "passed", "skipped", "failed"
@@ -73,17 +77,17 @@ sourceSets {
   }
 }
 
-mainClassName = 'tv.codely.apps.Starter'
+application {
+  mainClass = 'tv.codely.apps.Starter'
+}
 
 dependencies {
   // Spring Boot dependencies for main project
   implementation 'org.springframework.boot:spring-boot-starter'
   implementation 'org.springframework.boot:spring-boot-starter-web'
 
-  // Test dependencies for Spring Boot
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-  // Project dependencies
   implementation project(":shared")
   implementation project(":mooc")
 }
