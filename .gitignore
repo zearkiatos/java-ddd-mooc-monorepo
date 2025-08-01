@@ -8,3 +8,4 @@ gradle-app.setting
 var/log/*
 !var/log/.gitkeep
 .DS_Store
+.vscode

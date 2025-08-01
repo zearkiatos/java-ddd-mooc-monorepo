@@ -45,7 +45,11 @@ allprojects {
 
 // All subprojects (located in src/*)
 subprojects {
-  group = "tv.codely.${rootProject.name}"
+  group = "tv.codely"
+
+  dependencies {
+    implementation 'org.springframework:spring-context:5.3.31'
+  }
 
   sourceSets {
     main {
@@ -87,6 +91,8 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.mockito:mockito-core:4.11.0'
+  testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
 
   implementation project(":shared")
   implementation project(":mooc")

@@ -1,4 +1,4 @@
-rootProject.name = 'java-ddd-mooc-monorepo'
+rootProject.name = 'monorepo'
 
 include ':shared'
 project(':shared').projectDir = new File('src/shared')
