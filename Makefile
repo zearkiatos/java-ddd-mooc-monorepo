@@ -3,7 +3,7 @@
 all: build
 
 build:
-	@./gradlew assemble --warning-mode all
+	@./gradlew build --warning-mode all
 
 rebuild:
 	@./gradlew clean build
