@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "434d6e73-51db-422d-bec6-aa44100dc091",
+		"name": "JAVA DDD Mooc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1347256"
+	},
+	"item": [
+		{
+			"name": "health-check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MOOC_BASE_URL_API}}/health-check",
+					"host": [
+						"{{MOOC_BASE_URL_API}}"
+					],
+					"path": [
+						"health-check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "courses",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const { v4: uuidv4 } = require('uuid'); // Import the uuid library",
+							"",
+							"pm.environment.set(\"COURSE_UUID\", uuidv4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My course\",\n    \"duration\": \"21 H\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MOOC_BASE_URL_API}}/courses/{{COURSE_UUID}}",
+					"host": [
+						"{{MOOC_BASE_URL_API}}"
+					],
+					"path": [
+						"courses",
+						"{{COURSE_UUID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
