@@ -20,10 +20,19 @@ public abstract class RequestTestCase {
     private MockMvc mockMvc;
 
     public void assertResponse(String endpoint, Integer expectedStatusCode, String expectedResponse) throws Exception {
+        System.out.println("testing endpoint: " + endpoint);
         ResultMatcher response = expectedResponse.isEmpty() ? content().string("") : content().json(expectedResponse);
-
         mockMvc.perform(get(endpoint))
                 .andExpect(status().is(expectedStatusCode))
                 .andExpect(response);
     }
+
+    public void assertTextResponse(String endpoint, Integer expectedStatusCode, String expectedResponse) throws Exception {
+        System.out.println("testing endpoint: " + endpoint);
+        ResultMatcher response = expectedResponse.isEmpty() ? content().string("") : content().string(expectedResponse);
+        mockMvc.perform(get(endpoint))
+                .andExpect(status().is(expectedStatusCode))
+                .andExpect(response);
+    }
+
 }
