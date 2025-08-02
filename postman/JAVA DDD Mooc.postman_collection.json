@@ -63,6 +63,47 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "students",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const { v4: uuidv4 } = require('uuid');",
+							"",
+							"pm.environment.set(\"STUDENT_UUID\", uuidv4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Pedro\",\n    \"surname\": \"Capriles\",\n    \"email\": \"pedro.capriles@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MOOC_BASE_URL_API}}/students/{{STUDENT_UUID}}",
+					"host": [
+						"{{MOOC_BASE_URL_API}}"
+					],
+					"path": [
+						"students",
+						"{{STUDENT_UUID}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

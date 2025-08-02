@@ -37,6 +37,23 @@ $ curl --location --request PUT 'http://localhost:8080/courses/da5880e1-a4bf-45b
 201
 ```
 
+* Put Students
+## Request
+```sh
+$ curl --location --request PUT 'http://localhost:8080/students/04ae2542-57fa-46da-ae03-21003eb76184' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Pedro",
+    "surname": "Capriles",
+    "email": "pedro.capriles@example.com"
+}'
+```
+
+## Response
+```txt
+201
+```
+
 
 <p align="center">
   <a href="https://codely.com">
