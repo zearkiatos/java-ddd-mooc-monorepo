@@ -2,10 +2,10 @@ package tv.codely.mooc.courses.application.create;
 
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseRepository;
-import tv.codely.shared.domain.Service;
+import tv.codely.shared.domain.ServiceInjectable;
 
-@Service
-public class CourseCreator {
+@ServiceInjectable
+public final class CourseCreator {
     private CourseRepository repository;
 
     public CourseCreator(CourseRepository repository) {
