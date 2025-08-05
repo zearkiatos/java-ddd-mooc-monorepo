@@ -14,7 +14,7 @@ public final class InMemoryCourseRepository implements CourseRepository {
 
     @Override
     public void save(Course course) {
-        courses.put(course.id(), course);
+        courses.put(course.id().toString(), course);
     }
 
     @Override
