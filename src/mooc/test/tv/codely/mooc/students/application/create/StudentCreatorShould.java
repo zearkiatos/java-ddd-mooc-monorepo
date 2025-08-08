@@ -7,7 +7,11 @@ import static org.mockito.Mockito.verify;
 import org.junit.jupiter.api.Test;
 
 import tv.codely.mooc.students.domain.Student;
+import tv.codely.mooc.students.domain.StudentEmail;
+import tv.codely.mooc.students.domain.StudentId;
+import tv.codely.mooc.students.domain.StudentName;
 import tv.codely.mooc.students.domain.StudentRepository;
+import tv.codely.mooc.students.domain.StudentSurname;
 
 final class StudentCreatorShould {
     @Test
@@ -15,9 +19,15 @@ final class StudentCreatorShould {
         StudentRepository repository = mock(StudentRepository.class);
         StudentCreator creator = new StudentCreator(repository);
 
-        Student student = new Student("201c4bb3-b790-492c-9985-9919de9ee5c1", "Pedro", "Capriles", "pedro.capriles@example.com");
+        CreateStudentRequest request = new CreateStudentRequest("201c4bb3-b790-492c-9985-9919de9ee5c1", "Pedro", "Capriles", "pedro.capriles@example.com");
 
-        creator.create(student.id(), student.name(), student.surname(), student.email());
+        Student student = new Student(
+            new StudentId(request.id()),
+            new StudentName(request.name()),
+            new StudentSurname(request.surname()),
+            new StudentEmail(request.email())
+        );
+        creator.create(request);
 
         verify(repository, atLeastOnce()).save(student);
     }

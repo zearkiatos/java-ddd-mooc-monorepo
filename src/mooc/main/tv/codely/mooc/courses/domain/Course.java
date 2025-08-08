@@ -1,5 +1,7 @@
 package tv.codely.mooc.courses.domain;
 
+import java.util.Objects;
+
 public final class Course {
 
     private final CourseId id;
@@ -38,9 +40,6 @@ public final class Course {
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + duration.hashCode();
-        return result;
+        return Objects.hash(id, name, duration);
     }
 }

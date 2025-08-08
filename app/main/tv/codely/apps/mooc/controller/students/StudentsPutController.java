@@ -7,10 +7,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tv.codely.mooc.students.application.create.CreateStudentRequest;
+import tv.codely.mooc.students.application.create.StudentCreator;
+
 @RestController
-public class StudentsPutController {
+public final class StudentsPutController {
+    private final StudentCreator creator;
+
+    public StudentsPutController(StudentCreator creator) {
+        this.creator = creator;
+    }
     @PutMapping("/students/{id}")
     public ResponseEntity<Integer> create(@PathVariable String id, @RequestBody Request request) {
+        try {
+            creator.create(new CreateStudentRequest(id, request.name(), request.surname(), request.email()));
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
