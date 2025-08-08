@@ -2,34 +2,32 @@ package tv.codely.mooc.students.domain;
 
 import java.util.Objects;
 
-import tv.codely.mooc.courses.domain.Course;
-
 public class Student {
-    private String id;
-    private String name;
-    private String surname;
-    private String email;
+    private StudentId id;
+    private StudentName name;
+    private StudentSurname surname;
+    private StudentEmail email;
 
-    public Student(String id, String name, String surname, String email) {
+    public Student(StudentId id, StudentName name, StudentSurname surname, StudentEmail email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
     }
 
-    public String id() {
+    public StudentId id() {
         return id;
     }
 
-    public String name() {
+    public StudentName name() {
         return name;
     }
 
-    public String surname() {
+    public StudentSurname surname() {
         return surname;
     }
 
-    public String email() {
+    public StudentEmail email() {
         return email;
     }
 

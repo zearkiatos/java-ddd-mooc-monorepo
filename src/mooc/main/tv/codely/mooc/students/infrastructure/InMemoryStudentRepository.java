@@ -14,7 +14,7 @@ public class InMemoryStudentRepository implements StudentRepository {
     private HashMap<String, Student> students = new HashMap<>();
     @Override
     public void save(Student student) {
-        students.put(student.id(), student);
+        students.put(student.id().toString(), student);
     }
 
     @Override
