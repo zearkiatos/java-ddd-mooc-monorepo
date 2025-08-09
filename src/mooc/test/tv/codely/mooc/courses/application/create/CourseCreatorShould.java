@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import tv.codely.mooc.courses.CoursesModuleUnitTestCase;
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseMother;
-import tv.codely.mooc.courses.domain.CourseRepository;
-
-import static org.mockito.Mockito.*;
 
 final class CourseCreatorShould extends CoursesModuleUnitTestCase {
 
