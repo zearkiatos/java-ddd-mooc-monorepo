@@ -2,13 +2,13 @@ package tv.codely.shared.domain;
 
 public abstract class StringValueObject {
 
-   private final String value;
+   private String value;
 
    public StringValueObject(String value) {
        this.value = value;
    }
 
-   private String value() {
+   public String value() {
        return value;
    }
 

@@ -27,7 +27,7 @@ final class InMemoryStudentRepositoryShould {
     }
 
     @Test
-    void search_an_existing_student() {
+    void return_an_existing_student() {
         InMemoryStudentRepository repository = new InMemoryStudentRepository();
 
         Student student = new Student(

@@ -1,6 +1,8 @@
 dependencies {
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
+    testImplementation 'net.datafaker:datafaker:2.0.2'
+    testImplementation project(":shared").sourceSets.test.output
 }
 dependencies {
     implementation project(":shared")
