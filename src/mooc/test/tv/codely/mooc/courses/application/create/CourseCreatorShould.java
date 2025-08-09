@@ -3,10 +3,7 @@ package tv.codely.mooc.courses.application.create;
 import org.junit.jupiter.api.Test;
 
 import tv.codely.mooc.courses.domain.Course;
-import tv.codely.mooc.courses.domain.CourseDuration;
-import tv.codely.mooc.courses.domain.CourseId;
 import tv.codely.mooc.courses.domain.CourseMother;
-import tv.codely.mooc.courses.domain.CourseName;
 import tv.codely.mooc.courses.domain.CourseRepository;
 
 import static org.mockito.Mockito.*;
