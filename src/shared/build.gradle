@@ -1,13 +1,7 @@
 dependencies {
-    // Spring for @Service, etc.
-    implementation 'org.springframework:spring-context:5.3.31'
+    // Spring Boot for test configuration - explicit version
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.18'
 
-    // JUnit 5 for testing
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
-
-    // Mockito for mocking in tests
-    testImplementation 'org.mockito:mockito-core:4.11.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
-    testImplementation 'net.datafaker:datafaker:2.0.2'
+    // Only compile-time access to main app classes (like Starter) from root project
+    testCompileOnly rootProject
 }

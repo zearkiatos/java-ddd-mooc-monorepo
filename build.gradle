@@ -49,7 +49,7 @@ subprojects {
   group = "tv.codely"
 
   dependencies {
-    implementation 'org.springframework:spring-context:5.3.31'
+
   }
 
   sourceSets {
@@ -63,6 +63,26 @@ subprojects {
       resources { srcDirs = ['test/resources'] }
     }
   }
+
+  dependencies {
+        implementation 'org.springframework:spring-context:5.3.31'
+
+        testImplementation rootProject.sourceSets.main.output
+
+
+        if (project.name != "shared") {
+            implementation project(":shared")
+            testImplementation project(":shared").sourceSets.test.output
+        }
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+    jar {
+        enabled = true
+    }
 }
 
 // Main project (located in app/)
@@ -98,4 +118,5 @@ dependencies {
 
   implementation project(":shared")
   implementation project(":mooc")
+  testImplementation project(":shared").sourceSets.test.output
 }

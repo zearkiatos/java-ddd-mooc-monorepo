@@ -5,13 +5,14 @@ import java.util.Optional;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import tv.codely.mooc.courses.CoursesModuleInfrastructureTestCase;
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseIdMother;
 import tv.codely.mooc.courses.domain.CourseMother;
 
 
 
-final class InMemoryCourseRepositoryShould {
+final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
     @Test
     void save_a_valid_course() {
         InMemoryCourseRepository repository = new InMemoryCourseRepository();
