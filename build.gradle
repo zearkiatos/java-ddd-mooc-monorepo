@@ -18,6 +18,11 @@ allprojects {
     // Prod
     implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
     implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.19'
+    implementation 'org.hibernate:hibernate-core:5.4.5.Final'
+    implementation 'org.springframework:spring-orm:5.1.10.RELEASE'
+    implementation 'org.apache.tomcat:tomcat-dbcp:10.1.15'
+    implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
 
     // Test - JUnit 5 + JUnit 4 support
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
