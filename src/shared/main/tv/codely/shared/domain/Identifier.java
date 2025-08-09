@@ -36,4 +36,5 @@ public abstract class Identifier {
     public int hashCode() {
         return value.hashCode();
     }
+
 }
