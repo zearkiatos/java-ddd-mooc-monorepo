@@ -1,0 +1,17 @@
+services:
+  mysql:
+      env_file:
+        - mysql.env
+      build:
+        context: .
+        dockerfile: mysql.Dockerfile
+      container_name: mysql
+      volumes:
+        - ./data/mysql:/data/mysql
+      ports:
+        - "3307:3306"
+      networks:
+        localnetwork:
+networks:
+  localnetwork:
+    driver: bridge

@@ -27,13 +27,13 @@ final class InMemoryStudentRepositoryShould extends StudentsModuleInfrastructure
         Student student = StudentMother.random();
         repository.save(student);
 
-        Assert.assertEquals(Optional.of(student), repository.search(student.id().toString()));
+        Assert.assertEquals(Optional.of(student), repository.search(student.id()));
     }
 
     @Test
     void not_find_a_non_existing_student() throws Exception {
         InMemoryStudentRepository repository = new InMemoryStudentRepository();
 
-        Assert.assertFalse(repository.search(StudentIdMother.random().toString()).isPresent());
+        Assert.assertFalse(repository.search(StudentIdMother.random()).isPresent());
     }
 }

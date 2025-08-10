@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import tv.codely.mooc.students.domain.Student;
+import tv.codely.mooc.students.domain.StudentId;
 
 @ServiceInjectable
 public class InMemoryStudentRepository implements StudentRepository {
@@ -18,7 +19,7 @@ public class InMemoryStudentRepository implements StudentRepository {
     }
 
     @Override
-    public Optional<Student> search(String id) {
-        return Optional.ofNullable(students.get(id));
+    public Optional<Student> search(StudentId id) {
+        return Optional.ofNullable(students.get(id.toString()));
     }
 }

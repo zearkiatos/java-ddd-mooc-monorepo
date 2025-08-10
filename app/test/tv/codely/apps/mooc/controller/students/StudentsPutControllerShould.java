@@ -1,10 +1,13 @@
 package tv.codely.apps.mooc.controller.students;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ActiveProfiles;
+
 import java.util.UUID;
 
 import tv.codely.apps.mooc.controller.RequestTestCase;
 
+@ActiveProfiles("test")
 final class StudentsPutControllerShould extends RequestTestCase{
     @Test
     void create_a_valid_student() throws Exception {
