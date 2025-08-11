@@ -1,11 +1,29 @@
-package tv.codely.mooc.shared.infrastructure;
+package tv.codely.mooc.shared.infrastructure.persistence;
 
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AvailableSettings;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableTransactionManagement
+@Profile("local")
 public class MoocHibernateConfiguration {
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
@@ -16,6 +34,11 @@ public class MoocHibernateConfiguration {
         sessionFactory.setMappingLocations(mappingFiles.toArray(new Resource[mappingFiles.size()]));
 
         return sessionFactory;
+    }
+
+    @Bean
+    public SessionFactory hibernateSessionFactory() {
+        return sessionFactory().getObject();
     }
 
     private List<Resource> searchMappingFiles() {

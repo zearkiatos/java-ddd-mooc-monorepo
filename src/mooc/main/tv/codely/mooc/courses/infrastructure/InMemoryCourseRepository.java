@@ -10,7 +10,7 @@ import tv.codely.mooc.courses.domain.CourseRepository;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
-@Profile("test")
+@Profile({"test"})
 public final class InMemoryCourseRepository implements CourseRepository {
     private HashMap<String, Course> courses = new HashMap<>();
 

@@ -9,6 +9,6 @@ public final class CourseName extends StringValueObject {
     }
 
     private CourseName() {
-        super(null);
+        super("");
     }
 }

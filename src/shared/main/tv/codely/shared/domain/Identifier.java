@@ -1,13 +1,18 @@
 package tv.codely.shared.domain;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public abstract class Identifier {
+public abstract class Identifier implements Serializable {
     private UUID value;
 
     public Identifier(String value) {
         ensureValidUuid(value);
         this.value = UUID.fromString(value);
+    }
+
+    // Default constructor for Hibernate
+    protected Identifier() {
     }
 
     private void ensureValidUuid(String value) {

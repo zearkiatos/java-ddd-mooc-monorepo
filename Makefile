@@ -13,7 +13,7 @@ test:
 	@./gradlew check --warning-mode all
 
 run:
-	@./gradlew :run
+	SPRING_PROFILES_ACTIVE=local ./gradlew :run
 
 set-env:
 	sdk env
@@ -36,7 +36,7 @@ podman-mysql-down:
 run-local:
 	make docker-mysql-up
 	sleep 5
-	export SPRING_PROFILES_ACTIVE=local
+	docker exec -t mysql sh /docker/mysql-entrypoint.sh -d
 	make run
 	sleep 5
 	docker-mysql-down

@@ -4,9 +4,12 @@ import java.util.Objects;
 
 public final class Course {
 
-    private final CourseId id;
-    private final CourseName name;
-    private final CourseDuration duration;
+    private CourseId id;
+    private CourseName name;
+    private CourseDuration duration;
+
+    // Default constructor for Hibernate
+    public Course() {}
 
     public Course(CourseId id, CourseName name, CourseDuration duration) {
         this.id = id;
@@ -24,6 +27,15 @@ public final class Course {
 
     public CourseDuration duration() {
         return duration;
+    }
+
+    // Hibernate property accessors for ID conversion
+    public String getId() {
+        return id != null ? id.value() : null;
+    }
+
+    public void setId(String idString) {
+        this.id = idString != null ? new CourseId(idString) : null;
     }
 
     @Override
