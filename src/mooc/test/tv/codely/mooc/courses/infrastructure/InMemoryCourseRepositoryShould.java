@@ -31,7 +31,7 @@ final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTe
 
         repository.save(course);
 
-        Assert.assertEquals(Optional.of(course), repository.search(course.id().toString()));
+        Assert.assertEquals(Optional.of(course), repository.search(course.id()));
 
     }
 
@@ -39,7 +39,7 @@ final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTe
     void not_find_a_non_existing_course() throws Exception {
         InMemoryCourseRepository repository = new InMemoryCourseRepository();
 
-        Assert.assertFalse(repository.search(CourseIdMother.random().toString()).isPresent());
+        Assert.assertFalse(repository.search(CourseIdMother.random()).isPresent());
     }
 
 }

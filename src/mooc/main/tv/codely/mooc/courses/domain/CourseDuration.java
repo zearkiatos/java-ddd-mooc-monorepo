@@ -9,6 +9,6 @@ public final class CourseDuration extends StringValueObject {
     }
 
     private CourseDuration() {
-        super(null);
+        super("");
     }
 }

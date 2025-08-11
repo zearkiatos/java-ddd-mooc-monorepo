@@ -1,4 +1,7 @@
-CREATE TABLE `courses` (
+CREATE DATABASE IF NOT EXISTS `mooc` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `mooc`;
+
+CREATE TABLE IF NOT EXISTS `courses` (
   `id` CHAR(36) NOT NULL,
   `name` varchar(255) NOT NULL,
   `duration` VARCHAR(255) NOT NULL,

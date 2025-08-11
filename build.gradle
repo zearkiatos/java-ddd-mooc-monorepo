@@ -18,18 +18,13 @@ allprojects {
     // Prod
     implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
     implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.19'
-    implementation 'org.hibernate:hibernate-core:5.4.5.Final'
-    implementation 'org.springframework:spring-orm:5.1.10.RELEASE'
-    implementation 'org.apache.tomcat:tomcat-dbcp:10.1.15'
-    implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
-    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
 
     // Test - JUnit 5 + JUnit 4 support
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
     testImplementation 'junit:junit:4.12'
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.5.1'
-    testImplementation 'net.datafaker:datafaker:2.0.2'
+    testImplementation 'net.datafaker:datafaker:1.9.0'
   }
 
   test {
@@ -53,10 +48,6 @@ allprojects {
 subprojects {
   group = "tv.codely"
 
-  dependencies {
-
-  }
-
   sourceSets {
     main {
       java { srcDirs = ['main'] }
@@ -71,6 +62,12 @@ subprojects {
 
   dependencies {
         implementation 'org.springframework:spring-context:5.3.31'
+        implementation 'org.hibernate:hibernate-core:5.4.5.Final'
+        implementation 'org.springframework:spring-orm:5.1.10.RELEASE'
+        implementation 'org.apache.tomcat:tomcat-dbcp:8.5.100'
+        implementation 'javax.xml.bind:jaxb-api:2.3.1'
+        implementation 'com.sun.xml.bind:jaxb-impl:2.3.1'
+        implementation 'javax.transaction:javax.transaction-api:1.3'
 
         testImplementation rootProject.sourceSets.main.output
 
@@ -115,11 +112,14 @@ dependencies {
   // Spring Boot dependencies for main project
   implementation 'org.springframework.boot:spring-boot-starter'
   implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.18'
+  runtimeOnly 'mysql:mysql-connector-java:8.0.33'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'org.mockito:mockito-core:4.11.0'
   testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
-  testImplementation 'net.datafaker:datafaker:2.0.2'
+  testImplementation 'net.datafaker:datafaker:1.9.0'
+  testRuntimeOnly 'com.h2database:h2:2.1.214'
 
   implementation project(":shared")
   implementation project(":mooc")
