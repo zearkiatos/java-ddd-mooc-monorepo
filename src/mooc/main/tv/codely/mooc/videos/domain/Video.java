@@ -1,5 +1,7 @@
 package tv.codely.mooc.videos.domain;
 
+import java.util.Objects;
+
 public final class Video {
     private VideoId id;
     private VideoTitle title;
@@ -29,5 +31,32 @@ public final class Video {
 
     public VideoUrl url() {
         return url;
+    }
+
+    // Hibernate property accessors for ID conversion
+    public String getId() {
+        return id != null ? id.value() : null;
+    }
+
+    public void setId(String idString) {
+        this.id = idString != null ? new VideoId(idString) : null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Video video = (Video) o;
+
+        if (!id.equals(video.id)) return false;
+        if (!title.equals(video.title)) return false;
+        if (!description.equals(video.description)) return false;
+        return url.equals(video.url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, url);
     }
 }
