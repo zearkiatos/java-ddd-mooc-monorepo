@@ -8,8 +8,8 @@ public final class VideoDescription extends StringValueObject {
         super(value);
     }
 
-    private VideoDescription() {
-        super("");
+    protected VideoDescription() {
+        super(null);
     }
 
 }

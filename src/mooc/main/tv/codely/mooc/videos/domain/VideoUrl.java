@@ -8,8 +8,9 @@ public final class VideoUrl extends UrlValueObject {
         super(value);
     }
 
-    private VideoUrl() {
-        super("");
+    // Default constructor for Hibernate
+    protected VideoUrl() {
+        super(null);
     }
 
 }

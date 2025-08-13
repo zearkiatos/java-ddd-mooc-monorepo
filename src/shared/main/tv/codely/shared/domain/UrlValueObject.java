@@ -6,7 +6,9 @@ public abstract class UrlValueObject extends StringValueObject {
 
     public UrlValueObject(String value) {
         super(value);
-        validate(value);
+        if (value != null) {
+            validate(value);
+        }
     }
 
     private static final String URL_REGEX = Pattern.compile(

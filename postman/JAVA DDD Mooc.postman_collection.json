@@ -30,7 +30,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"const { v4: uuidv4 } = require('uuid'); // Import the uuid library",
+							"const { v4: uuidv4 } = require('uuid');",
 							"",
 							"pm.environment.set(\"COURSE_UUID\", uuidv4());"
 						],
@@ -85,7 +85,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Pedro\",\n    \"surname\": \"Capriles\",\n    \"email\": \"pedro.capriles@example.com\"\n}",
+					"raw": "{\n    \"name\": \"Pedro\",\n    \"surname\": \"Capriles\",\n    \"email\": \"pedro.capriles@xample.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,6 +100,47 @@
 					"path": [
 						"students",
 						"{{STUDENT_UUID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "videos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const { v4: uuidv4 } = require('uuid');",
+							"",
+							"pm.environment.set(\"VIDEO_UUID\", uuidv4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Course 1\",\n    \"description\": \"Lorem ipsum\",\n    \"url\": \"example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MOOC_BASE_URL_API}}/videos/{{VIDEO_UUID}}",
+					"host": [
+						"{{MOOC_BASE_URL_API}}"
+					],
+					"path": [
+						"videos",
+						"{{VIDEO_UUID}}"
 					]
 				}
 			},

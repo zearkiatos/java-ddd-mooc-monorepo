@@ -1,7 +1,8 @@
 package tv.codely.apps.mooc.controller.videos;
 
-import org.junit.jupiter.api.Test;
 import java.util.UUID;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
 import tv.codely.apps.mooc.controller.RequestTestCase;

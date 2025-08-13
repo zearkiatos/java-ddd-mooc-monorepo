@@ -20,6 +20,7 @@ public final class VideosPutController {
 
     @PutMapping("/videos/{id}")
     public ResponseEntity<Integer> create(@PathVariable String id, @RequestBody Request request) {
+        System.out.println("Generated video ID: " + id);
         creator.create(new CreateVideoRequest(id, request.title(), request.description(), request.url()));
 
         return new ResponseEntity<>(HttpStatus.CREATED);

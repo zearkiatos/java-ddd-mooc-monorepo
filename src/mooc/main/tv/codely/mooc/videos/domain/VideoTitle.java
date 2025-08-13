@@ -8,8 +8,8 @@ public final class VideoTitle extends StringValueObject {
         super(value);
     }
 
-    private VideoTitle() {
-        super("");
+    protected VideoTitle() {
+        super(null);
     }
 
 }
