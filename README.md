@@ -54,6 +54,23 @@ $ curl --location --request PUT 'http://localhost:8080/students/04ae2542-57fa-46
 201
 ```
 
+* Put Videos
+## Request
+```sh
+$ curl --location --request PUT 'http://localhost:8080/videos/8f51c8e9-8d9b-4e0e-906a-31f869013696' \
+--header 'Content-Type: application/json' \
+--data '{
+    "title": "Course 1",
+    "description": "Lorem ipsum",
+    "url": "http://example.com/file"
+}'
+```
+
+## Response
+```txt
+201
+```
+
 
 <p align="center">
   <a href="https://codely.com">

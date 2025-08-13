@@ -8,7 +8,6 @@ public final class CourseId extends Identifier {
         super(value);
     }
 
-    // Default constructor for Hibernate
     public CourseId() {
         super();
     }

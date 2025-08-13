@@ -2,7 +2,7 @@ package tv.codely.shared.domain;
 
 public abstract class StringValueObject {
 
-   private String value;
+   protected String value;
 
    public StringValueObject(String value) {
        this.value = value;
