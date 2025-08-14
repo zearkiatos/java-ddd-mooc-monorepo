@@ -13,7 +13,7 @@ test:
 	@./gradlew check --warning-mode all
 
 run:
-	SPRING_PROFILES_ACTIVE=local ./gradlew :run
+	SPRING_PROFILES_ACTIVE=local ./gradlew :run --args='${APP}'
 
 set-env:
 	sdk env
@@ -34,10 +34,22 @@ podman-mysql-down:
 	podman compose -f docker-compose.mysql.yaml down
 
 run-local:
+ifndef APP
+	@echo "❌ Error: APP argument is required"
+	@echo "📋 Usage: make run-local APP=your-app-name"
+	@echo "📝 Example: make run-local APP="mooc_backend api"
+	@exit 1
+endif
+ifeq ($(strip $(APP)),)
+	@echo "❌ Error: APP argument cannot be empty"
+	@echo "📋 Usage: make run-local APP=your-app-name"
+	@exit 1
+endif
+	@echo "🚀 Starting application with APP=$(APP)"
 	make docker-mysql-up
 	sleep 5
 	docker exec -t mysql sh /docker/mysql-entrypoint.sh -d
-	make run
+	make run APP='$(APP)'
 	sleep 5
-	docker-mysql-down
+	make docker-mysql-down
 

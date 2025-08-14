@@ -1,5 +1,8 @@
 package tv.codely.shared.infrastructure.cli;
 
+import tv.codely.shared.domain.ServiceInjectable;
+
+@ServiceInjectable
 public abstract class ConsoleCommand {
 
     private static final String ANSI_RESET = "\u001B[0m";
