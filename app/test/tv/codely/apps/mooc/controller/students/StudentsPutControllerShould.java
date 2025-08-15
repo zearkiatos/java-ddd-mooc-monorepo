@@ -5,7 +5,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.UUID;
 
-import tv.codely.apps.mooc.controller.RequestTestCase;
+import tv.codely.apps.shared.controller.RequestTestCase;
 
 @ActiveProfiles("test")
 final class StudentsPutControllerShould extends RequestTestCase{
