@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import tv.codely.apps.backoffice.frontend.BackofficeFrontendApplication;
 import tv.codely.apps.mooc.MoocBackendApplication;
 import tv.codely.shared.infrastructure.cli.ConsoleCommand;
 
@@ -19,7 +20,7 @@ public class Starter {
 
         String applicationName = args[0];
         String commandName = args[1];
-        boolean isApiCommand = commandName.equals("api");
+        boolean isServerCommand = commandName.equals("server");
 
         ensureApplicationExist(applicationName);
         ensureCommandExist(applicationName, commandName);
@@ -27,13 +28,13 @@ public class Starter {
         Class<?> applicationClass = applications().get(applicationName);
         SpringApplication app = new SpringApplication(applicationClass);
 
-        if (!isApiCommand) {
+        if (!isServerCommand) {
             app.setWebApplicationType(WebApplicationType.NONE);
         }
 
         ConfigurableApplicationContext context = app.run(args);
 
-         if (!isApiCommand) {
+         if (!isServerCommand) {
             ConsoleCommand command = (ConsoleCommand) context.getBean(
                 commands().get(applicationName).get(commandName)
             );
@@ -53,7 +54,7 @@ public class Starter {
     }
 
     private static void ensureCommandExist(String applicationName, String commandName) {
-        if (!"api".equals(commandName) && !existCommand(applicationName, commandName)) {
+        if (!"server".equals(commandName) && !existCommand(applicationName, commandName)) {
             throw new RuntimeException(String.format(
                     "The command <%s> for application <%s> doesn't exist. Valids (application.command):\n- api\n- %s",
                     commandName,
@@ -67,6 +68,7 @@ public class Starter {
         HashMap<String, Class<?>> applications = new HashMap<>();
 
 		applications.put("mooc_backend", MoocBackendApplication.class);
+        applications.put("backoffice_frontend", BackofficeFrontendApplication.class);
 
         return applications;
     }

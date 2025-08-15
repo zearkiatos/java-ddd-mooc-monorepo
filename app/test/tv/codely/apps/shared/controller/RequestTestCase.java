@@ -1,4 +1,4 @@
-package tv.codely.apps.mooc.controller;
+package tv.codely.apps.shared.controller;
 
 import org.junit.runner.RunWith;
 import static org.springframework.http.MediaType.APPLICATION_JSON;

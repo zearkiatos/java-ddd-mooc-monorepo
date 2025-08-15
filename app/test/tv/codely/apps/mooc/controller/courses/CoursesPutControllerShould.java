@@ -3,7 +3,7 @@ package tv.codely.apps.mooc.controller.courses;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import tv.codely.apps.mooc.controller.RequestTestCase;
+import tv.codely.apps.shared.controller.RequestTestCase;
 
 @ActiveProfiles("test")
 final class CoursesPutControllerShould extends RequestTestCase {
