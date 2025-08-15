@@ -1,13 +1,13 @@
 package tv.codely.shared.domain;
 
-import org.springframework.stereotype.Service;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
 
-@Service
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@Inherited
 public @interface ServiceInjectable {
 }

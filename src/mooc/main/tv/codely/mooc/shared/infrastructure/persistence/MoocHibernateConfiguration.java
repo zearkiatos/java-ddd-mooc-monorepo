@@ -84,8 +84,8 @@ public class MoocHibernateConfiguration {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(
                 "jdbc:mysql://localhost:3307/mooc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("user");
-        dataSource.setPassword("password");
+        dataSource.setUsername("mooc_user");
+        dataSource.setPassword("SecureP@ssw0rd123!");
 
         return dataSource;
     }

@@ -48,7 +48,7 @@ endif
 	@echo "🚀 Starting application with APP=$(APP)"
 	make docker-mysql-up
 	sleep 5
-	docker exec -t mysql sh /docker/mysql-entrypoint.sh -d
+# 	docker exec -t mysql sh /docker/mysql-entrypoint.sh -d
 	make run APP='$(APP)'
 	sleep 5
 	make docker-mysql-down

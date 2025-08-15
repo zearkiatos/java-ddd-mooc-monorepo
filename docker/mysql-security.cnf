@@ -1,0 +1,50 @@
+[mysqld]
+# Security Settings
+bind-address = 0.0.0.0
+skip-networking = 0
+skip-name-resolve = 1
+skip-symbolic-links = 1
+
+# Connection Limits
+max_connections = 100
+max_user_connections = 50
+max_connect_errors = 10
+interactive_timeout = 300
+wait_timeout = 300
+
+# SQL Mode for strict data validation (MySQL 8.0 compatible)
+sql_mode = STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+
+# Logging for security monitoring
+log_error = /var/log/mysql/error.log
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 2
+
+# Binary logging for replication and point-in-time recovery
+log_bin = /var/log/mysql/mysql-bin
+binlog_format = ROW
+expire_logs_days = 7
+max_binlog_size = 100M
+
+# InnoDB Settings
+innodb_buffer_pool_size = 128M
+innodb_log_file_size = 48M
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit = 1
+
+# Disable dangerous functions
+local_infile = 0
+secure_file_priv = /var/lib/mysql-files/
+
+# Performance Schema for monitoring
+performance_schema = ON
+
+[mysql]
+# Client security
+no-auto-rehash
+safe-updates
+
+[client]
+# Default character set
+default-character-set = utf8mb4

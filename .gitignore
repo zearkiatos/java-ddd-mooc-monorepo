@@ -8,3 +8,19 @@ var/log/*
 !var/log/.gitkeep
 .vscode
 data
+
+# Security - Never commit sensitive files
+*.env
+secrets/
+*.key
+*.pem
+*.crt
+*.p12
+*.jks
+.env.local
+.env.production
+.env.staging
+
+# Docker
+.docker/
+docker-compose.override.yml
