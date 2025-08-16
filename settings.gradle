@@ -6,3 +6,8 @@ project(':shared').projectDir = new File('src/shared')
 include ':mooc'
 project(':mooc').projectDir = new File('src/mooc')
 
+include ':backoffice'
+project(':backoffice').projectDir = new File('src/backoffice')
+
+include ':app'
+project(':app').projectDir = new File('app')

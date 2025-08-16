@@ -9,7 +9,6 @@ import tv.codely.mooc.videos.domain.Video;
 import tv.codely.mooc.videos.domain.VideoId;
 import tv.codely.mooc.videos.domain.VideoRepository;
 import tv.codely.shared.domain.ServiceInjectable;
-
 @ServiceInjectable
 @Profile({"test"})
 public final class InMemoryVideoRepository implements VideoRepository {

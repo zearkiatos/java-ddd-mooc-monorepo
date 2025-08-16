@@ -1,4 +1,4 @@
-package tv.codely.apps.mooc;
+package tv.codely.apps.mooc.backend;
 
 import java.util.HashMap;
 

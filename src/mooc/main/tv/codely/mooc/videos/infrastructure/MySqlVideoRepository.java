@@ -9,22 +9,23 @@ import tv.codely.mooc.videos.domain.Video;
 import tv.codely.mooc.videos.domain.VideoId;
 import tv.codely.mooc.videos.domain.VideoRepository;
 import tv.codely.shared.domain.ServiceInjectable;
+import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
 @ServiceInjectable
 @Profile("local")
-public class MySqlVideoRepository implements VideoRepository {
+public class MySqlVideoRepository extends HibernateRepository<Video> implements VideoRepository {
     private SessionFactory sessionFactory;
 
     public MySqlVideoRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+        super(sessionFactory, Video.class);
     }
-    @Transactional
+    @Override
     public void save(Video video) {
-        sessionFactory.getCurrentSession().save(video);
+        persist(video);
     }
 
     @Override
     public Optional<Video> search(VideoId id) {
-        return Optional.ofNullable(sessionFactory.getCurrentSession().find(Video.class, id.value()));
+        return byId(id);
     }
 }

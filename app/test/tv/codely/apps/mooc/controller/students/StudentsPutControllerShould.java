@@ -2,11 +2,12 @@ package tv.codely.apps.mooc.controller.students;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
-
+import org.springframework.test.context.ContextConfiguration;
 import java.util.UUID;
-
+import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.apps.shared.controller.RequestTestCase;
 
+@ContextConfiguration(classes = MoocBackendApplication.class)
 @ActiveProfiles("test")
 final class StudentsPutControllerShould extends RequestTestCase{
     @Test

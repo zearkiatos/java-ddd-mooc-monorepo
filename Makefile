@@ -9,8 +9,11 @@ rebuild:
 	@./gradlew clean build
 
 test:
+	make docker-test-up
+	sleep 5
 	export SPRING_PROFILES_ACTIVE=test
 	@./gradlew check --warning-mode all
+	make docker-test-down
 
 run:
 	SPRING_PROFILES_ACTIVE=local ./gradlew :run --args='${APP}'
@@ -32,6 +35,18 @@ podman-mysql-up:
 
 podman-mysql-down:
 	podman compose -f docker-compose.mysql.yaml down
+
+docker-test-up:
+	docker-compose -f docker-compose.test.yaml up --build -d
+
+docker-test-down:
+	docker-compose -f docker-compose.test.yaml down
+
+podman-test-up:
+	podman compose -f docker-compose.test.yaml up --build -d
+
+podman-test-down:
+	podman compose -f docker-compose.test.yaml down
 
 run-local:
 ifndef APP

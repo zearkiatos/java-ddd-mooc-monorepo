@@ -1,24 +1,28 @@
 package tv.codely.mooc.courses.infrastructure;
 
+import tv.codely.mooc.courses.CoursesModuleInfrastructureTestCase;
 import java.util.Optional;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import javax.transaction.Transactional;
 import org.springframework.test.context.ActiveProfiles;
 
 import tv.codely.mooc.courses.CoursesModuleInfrastructureTestCase;
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseIdMother;
 import tv.codely.mooc.courses.domain.CourseMother;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-
-@ActiveProfiles("test")
-final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
+@Transactional
+@ActiveProfiles("local")
+final class MySqlCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
     @Test
     void save_a_valid_course() {
         Course course = CourseMother.random();
 
-        inMemoryCourseRepository.save(course);
+        mySqlCourseRepository.save(course);
 
     }
 
@@ -26,15 +30,13 @@ final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTe
     void search_an_existing_course() {
         Course course = CourseMother.random();
 
-        inMemoryCourseRepository.save(course);
+        mySqlCourseRepository.save(course);
 
-        Assert.assertEquals(Optional.of(course), inMemoryCourseRepository.search(course.id()));
-
+        assertEquals(Optional.of(course), mySqlCourseRepository.search(course.id()));
     }
 
     @Test
     void not_find_a_non_existing_course() throws Exception {
-        Assert.assertFalse(inMemoryCourseRepository.search(CourseIdMother.random()).isPresent());
+        assertFalse(mySqlCourseRepository.search(CourseIdMother.random()).isPresent());
     }
-
 }

@@ -8,7 +8,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import tv.codely.apps.backoffice.frontend.BackofficeFrontendApplication;
-import tv.codely.apps.mooc.MoocBackendApplication;
+import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.shared.infrastructure.cli.ConsoleCommand;
 
 public class Starter {
