@@ -37,10 +37,10 @@ podman-mysql-down:
 	podman compose -f docker-compose.mysql.yaml down
 
 docker-test-up:
-	docker-compose -f docker-compose.test.yaml up --build -d
+	docker compose -f docker-compose.test.yaml up --build -d
 
 docker-test-down:
-	docker-compose -f docker-compose.test.yaml down
+	docker compose -f docker-compose.test.yaml down
 
 podman-test-up:
 	podman compose -f docker-compose.test.yaml up --build -d
