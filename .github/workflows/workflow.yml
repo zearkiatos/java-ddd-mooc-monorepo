@@ -18,5 +18,5 @@ jobs:
     - name: Assemble
       run: ./gradlew assemble --warning-mode all
 
-    - name: Check
-      run: ./gradlew check --warning-mode all
+    - name: Check 🧪
+      run: make test

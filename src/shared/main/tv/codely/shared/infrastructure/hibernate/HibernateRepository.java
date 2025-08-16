@@ -18,9 +18,10 @@ public abstract class HibernateRepository<T> {
 
     protected void persist(T entity) {
         sessionFactory.getCurrentSession().save(entity);
+        sessionFactory.getCurrentSession().flush();
     }
 
     protected Optional<T> byId(Identifier id) {
-        return Optional.ofNullable(sessionFactory.getCurrentSession().byId(aggregateClass).load(id.toString()));
+        return Optional.ofNullable(sessionFactory.getCurrentSession().get(aggregateClass, id.value()));
     }
 }

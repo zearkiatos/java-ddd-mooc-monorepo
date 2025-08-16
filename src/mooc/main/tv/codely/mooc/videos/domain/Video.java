@@ -1,6 +1,7 @@
 package tv.codely.mooc.videos.domain;
 
 import java.util.Objects;
+import tv.codely.shared.domain.VideoUrl;
 
 public final class Video {
     private VideoId id;

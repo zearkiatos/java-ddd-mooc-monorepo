@@ -1,6 +1,4 @@
-package tv.codely.mooc.videos.domain;
-
-import tv.codely.shared.domain.UrlValueObject;
+package tv.codely.shared.domain;
 
 public final class VideoUrl extends UrlValueObject {
 

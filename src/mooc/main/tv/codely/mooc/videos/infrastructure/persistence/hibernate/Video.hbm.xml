@@ -18,7 +18,7 @@
         </component>
 
 
-        <component name="url" class="tv.codely.mooc.videos.domain.VideoUrl" access="field">
+        <component name="url" class="tv.codely.shared.domain.VideoUrl" access="field">
             <property name="value" column="url" type="string" access="field" />
         </component>
     </class>
