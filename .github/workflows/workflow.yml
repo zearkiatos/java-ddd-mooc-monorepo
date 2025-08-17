@@ -16,7 +16,7 @@ jobs:
         java-version: 8
 
     - name: Assemble
-      run: make build
+      run: ./gradlew assemble --warning-mode all
 
     - name: Check 🧪
       run: make test
