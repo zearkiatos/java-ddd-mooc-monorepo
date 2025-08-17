@@ -16,7 +16,7 @@ jobs:
         java-version: 8
 
     - name: Assemble
-      run: make rebuild
+      run: make build
 
     - name: Check 🧪
       run: make test
