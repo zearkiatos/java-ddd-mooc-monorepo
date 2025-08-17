@@ -1,6 +1,7 @@
 package tv.codely.mooc.videos.application.create;
 
 import tv.codely.mooc.videos.domain.*;
+import tv.codely.shared.domain.VideoUrl;
 
 public final class CreateVideoRequestMother {
     public static CreateVideoRequest create(VideoId id, VideoTitle title, VideoDescription description, VideoUrl url) {

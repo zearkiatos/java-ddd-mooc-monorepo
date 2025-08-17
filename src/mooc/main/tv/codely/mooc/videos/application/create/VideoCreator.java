@@ -5,7 +5,7 @@ import tv.codely.mooc.videos.domain.VideoDescription;
 import tv.codely.mooc.videos.domain.VideoId;
 import tv.codely.mooc.videos.domain.VideoRepository;
 import tv.codely.mooc.videos.domain.VideoTitle;
-import tv.codely.mooc.videos.domain.VideoUrl;
+import tv.codely.shared.domain.VideoUrl;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable

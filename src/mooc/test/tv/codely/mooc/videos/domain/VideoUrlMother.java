@@ -1,6 +1,7 @@
 package tv.codely.mooc.videos.domain;
 
 import tv.codely.shared.domain.UrlMother;
+import tv.codely.shared.domain.VideoUrl;
 
 public final class VideoUrlMother {
     public static VideoUrl create(String value) {

@@ -13,10 +13,10 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         distribution: 'zulu'
-        java-version: 21
+        java-version: 8
 
     - name: Assemble
       run: ./gradlew assemble --warning-mode all
 
-    - name: Check
-      run: ./gradlew check --warning-mode all
+    - name: Check 🧪
+      run: make test
