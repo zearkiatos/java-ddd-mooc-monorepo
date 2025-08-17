@@ -16,7 +16,7 @@ jobs:
         java-version: 21
 
     - name: Assemble
-      run: ./gradlew assemble --warning-mode all
+      run: make rebuild
 
     - name: Check 🧪
       run: make test
