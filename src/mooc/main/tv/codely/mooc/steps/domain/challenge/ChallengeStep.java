@@ -1,20 +1,31 @@
 package tv.codely.mooc.steps.domain.challenge;
 import tv.codely.mooc.steps.domain.*;
+
 public final class ChallengeStep extends Step {
 
-    private final ChallengeStepStatement statement;
+    private ChallengeStepStatement statement;
 
     public ChallengeStep(StepId id, StepTitle title, ChallengeStepStatement statement) {
         super(id, title);
         this.statement = statement;
     }
 
+    // Default constructor for Hibernate
+    public ChallengeStep() {
+        super();
+        this.statement = new ChallengeStepStatement();
+    }
+
     public ChallengeStepStatement statement() {
         return statement;
     }
 
-    public ChallengeStep() {
-        super(null, null);
-        this.statement = new ChallengeStepStatement();
+    // Hibernate getters/setters
+    public ChallengeStepStatement getStatement() {
+        return statement;
+    }
+
+    public void setStatement(ChallengeStepStatement statement) {
+        this.statement = statement;
     }
 }

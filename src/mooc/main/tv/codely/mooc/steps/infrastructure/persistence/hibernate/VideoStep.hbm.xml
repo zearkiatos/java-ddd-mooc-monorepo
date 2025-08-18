@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
     <class name="tv.codely.mooc.steps.domain.Step" table="steps">
-        <id name="id" column="id" type="string" length="36">
+        <id name="id" column="id" length="36" type="tv.codely.mooc.steps.infrastructure.persistence.hibernate.StepIdType">
             <generator class="assigned" />
         </id>
 

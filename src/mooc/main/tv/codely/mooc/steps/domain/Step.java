@@ -3,12 +3,16 @@ package tv.codely.mooc.steps.domain;
 import java.util.Objects;
 
 public abstract class Step {
-    private final StepId id;
-    private final StepTitle title;
+    private StepId id;
+    private StepTitle title;
 
     protected Step(StepId id, StepTitle title) {
         this.id = id;
         this.title = title;
+    }
+
+    // Default constructor for Hibernate
+    protected Step() {
     }
 
     public StepId id() {
@@ -17,6 +21,23 @@ public abstract class Step {
 
     public StepTitle title() {
         return title;
+    }
+
+    // Hibernate getters/setters
+    public StepId getId() {
+        return id;
+    }
+
+    public void setId(StepId id) {
+        this.id = id;
+    }
+
+    public StepTitle getTitle() {
+        return title;
+    }
+
+    public void setTitle(StepTitle title) {
+        this.title = title;
     }
 
     @Override

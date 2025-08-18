@@ -5,13 +5,20 @@ import tv.codely.mooc.steps.domain.*;
 
 
 public final class VideoStep extends Step {
-    private final VideoUrl videoUrl;
-    private final VideoTextStep text;
+    private VideoUrl videoUrl;
+    private VideoTextStep text;
 
     public VideoStep(StepId id, StepTitle title, VideoUrl videoUrl, VideoTextStep text) {
         super(id, title);
         this.text = text;
         this.videoUrl = videoUrl;
+    }
+
+    // Default constructor for Hibernate
+    public VideoStep() {
+        super();
+        this.videoUrl = null;
+        this.text = new VideoTextStep();
     }
 
     public VideoUrl videoUrl() {
@@ -22,9 +29,20 @@ public final class VideoStep extends Step {
         return text;
     }
 
-    public VideoStep() {
-        super(null, null);
-        this.videoUrl = null;
-        this.text = new VideoTextStep();
+    // Hibernate getters/setters
+    public VideoUrl getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(VideoUrl videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    public VideoTextStep getText() {
+        return text;
+    }
+
+    public void setText(VideoTextStep text) {
+        this.text = text;
     }
 }

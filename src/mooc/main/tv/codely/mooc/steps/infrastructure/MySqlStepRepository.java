@@ -14,7 +14,6 @@ import tv.codely.mooc.steps.domain.StepRepository;
 @ServiceInjectable
 @Profile("local")
 public class MySqlStepRepository extends HibernateRepository<Step> implements StepRepository {
-    private SessionFactory sessionFactory;
 
     public MySqlStepRepository(SessionFactory sessionFactory) {
         super(sessionFactory, Step.class);
@@ -28,6 +27,6 @@ public class MySqlStepRepository extends HibernateRepository<Step> implements St
 
     @Override
     public Optional<Step> search(StepId id) {
-        return byId(id);
+        return Optional.ofNullable(sessionFactory.getCurrentSession().get(Step.class, id));
     }
 }

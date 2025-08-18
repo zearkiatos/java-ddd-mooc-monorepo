@@ -36,5 +36,5 @@ CREATE TABLE IF NOT EXISTS `steps_videos` (
   `url` VARCHAR(255) NOT NULL,
   `text` TEXT NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_steps_video__step_id` FOREIGN KEY (`step_id`) REFERENCES `steps` (`id`),
+  CONSTRAINT `fk_steps_video__step_id` FOREIGN KEY (`id`) REFERENCES `steps` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
