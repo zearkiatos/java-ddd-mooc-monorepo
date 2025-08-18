@@ -8,8 +8,21 @@ public abstract class StringValueObject {
        this.value = value;
    }
 
+   // Default constructor for Hibernate
+   protected StringValueObject() {
+   }
+
    public String value() {
        return value;
+   }
+
+   // Hibernate getters/setters
+   public String getValue() {
+       return value;
+   }
+
+   public void setValue(String value) {
+       this.value = value;
    }
 
    @Override
