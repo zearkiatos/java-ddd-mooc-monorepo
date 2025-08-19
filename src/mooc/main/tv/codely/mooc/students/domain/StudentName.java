@@ -8,4 +8,9 @@ public final class StudentName extends StringValueObject {
         super(value);
     }
 
+    // Default constructor for Hibernate
+    protected StudentName() {
+        super();
+    }
+
 }

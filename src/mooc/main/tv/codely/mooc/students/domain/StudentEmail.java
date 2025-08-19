@@ -8,4 +8,9 @@ public final class StudentEmail extends EmailValueObject {
         super(value);
     }
 
+    // Default constructor for Hibernate
+    protected StudentEmail() {
+        super();
+    }
+
 }

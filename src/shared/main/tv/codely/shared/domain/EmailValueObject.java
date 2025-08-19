@@ -7,6 +7,11 @@ public abstract class EmailValueObject extends StringValueObject {
         validate(value);
     }
 
+    // Default constructor for Hibernate
+    protected EmailValueObject() {
+        super();
+    }
+
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
     private void validate(String value) {

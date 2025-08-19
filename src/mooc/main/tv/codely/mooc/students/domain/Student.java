@@ -15,6 +15,10 @@ public class Student {
         this.email = email;
     }
 
+    // Default constructor for Hibernate
+    protected Student() {
+    }
+
     public StudentId id() {
         return id;
     }
@@ -29,6 +33,14 @@ public class Student {
 
     public StudentEmail email() {
         return email;
+    }
+
+    public String getId() {
+        return id != null ? id.value() : null;
+    }
+
+    public void setId(String idString) {
+        this.id = idString != null ? new StudentId(idString) : null;
     }
 
     @Override
