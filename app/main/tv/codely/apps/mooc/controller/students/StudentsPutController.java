@@ -19,11 +19,11 @@ public final class StudentsPutController {
     }
     @PutMapping("/students/{id}")
     public ResponseEntity<Integer> create(@PathVariable String id, @RequestBody Request request) {
-        // try {
+        try {
             creator.create(new CreateStudentRequest(id, request.name(), request.surname(), request.email()));
-        // } catch (Exception e) {
-        //     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        // }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
 
         return new ResponseEntity<>(HttpStatus.CREATED);
