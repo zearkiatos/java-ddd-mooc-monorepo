@@ -3,6 +3,8 @@ package src.mooc.test.tv.codely.mooc.students.infrastructure;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -21,23 +23,30 @@ import tv.codely.mooc.students.domain.StudentIdMother;
 final class MySqlStudentRepositoryShould extends StudentsModuleInfrastructureTestCase {
     @Test
     void save_a_valid_student() {
-        Student student = StudentMother.random();
-
-        mySqlStudentRepository.save(student);
+        for (Student student : students()) {
+            mySqlStudentRepository.save(student);
+        }
 
     }
 
     @Test
     void search_an_existing_student() {
-        Student student = StudentMother.random();
-
-        mySqlStudentRepository.save(student);
-
-        assertEquals(Optional.of(student), mySqlStudentRepository.search(student.id()));
+        for (Student student : students()) {
+            mySqlStudentRepository.save(student);
+            assertEquals(Optional.of(student), mySqlStudentRepository.search(student.id()));
+        }
     }
 
     @Test
     void not_find_a_non_existing_student() throws Exception {
-        assertFalse(mySqlStudentRepository.search(StudentIdMother.random()).isPresent());
+        for (Student student : students()) {
+            assertFalse(mySqlStudentRepository.search(student.id()).isPresent());
+        }
+    }
+
+    private List<? extends Student> students() {
+        return Arrays.asList(
+                StudentMother.random()
+        );
     }
 }
