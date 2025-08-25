@@ -11,6 +11,7 @@ rebuild:
 test:
 	make docker-test-up
 	sleep 5
+	docker ps
 	export SPRING_PROFILES_ACTIVE=test
 	@./gradlew check --warning-mode all
 	make docker-test-down
