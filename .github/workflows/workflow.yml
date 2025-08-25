@@ -19,6 +19,5 @@ jobs:
       run: ./gradlew assemble --warning-mode all
 
     - name: Check 🧪
-      run: |
-        make test
-        docker logs mysql-test-db
+      run: make test
+
