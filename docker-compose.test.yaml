@@ -7,8 +7,8 @@ services:
         dockerfile: mysql.Dockerfile
       container_name: mysql-test-db
       restart: unless-stopped
-      volumes:
-        - ./data-test/mysql:/var/lib/mysql
+      tmpfs:
+      - /var/lib/mysql
       ports:
         - "127.0.0.1:3307:3306"  # Bind only to localhost for security
       networks:
