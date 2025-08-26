@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import tv.codely.mooc.courses.CoursesModuleUnitTestCase;
 import tv.codely.mooc.courses.domain.Course;
+import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
 import tv.codely.mooc.courses.domain.CourseMother;
 
 final class CourseCreatorShould extends CoursesModuleUnitTestCase {
@@ -15,18 +16,20 @@ final class CourseCreatorShould extends CoursesModuleUnitTestCase {
     protected void setUp() {
         super.setUp();
 
-        creator = new CourseCreator(repository);
+        creator = new CourseCreator(repository, eventBus);
     }
 
 
 
     @Test
-    void save_a_valid_course() throws Exception {
+    void create_a_valid_course() throws Exception {
         CreateCourseRequest request = CreateCourseRequestMother.random();
         Course course = CourseMother.fromRequest(request);
+        CourseCreatedDomainEvent domainEvent = CourseCreatedDomainEventMother.fromCourse(course);
 
         creator.create(request);
 
         shouldHaveSaved(course);
+        shouldHavePublished(domainEvent);
     }
 }

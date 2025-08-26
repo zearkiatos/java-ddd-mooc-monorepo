@@ -1,8 +1,9 @@
 package tv.codely.mooc.courses.domain;
 
 import java.util.Objects;
+import tv.codely.shared.domain.AggregateRoot;
 
-public final class Course {
+public final class Course extends AggregateRoot {
 
     private CourseId id;
     private CourseName name;
@@ -27,6 +28,14 @@ public final class Course {
 
     public CourseDuration duration() {
         return duration;
+    }
+
+    public static Course create(CourseId id, CourseName name, CourseDuration duration) {
+        Course course = new Course(id, name, duration);
+
+        course.record(new CourseCreatedDomainEvent(id.value(), name.value(), duration.value()));
+
+        return course;
     }
 
     // Hibernate property accessors for ID conversion
