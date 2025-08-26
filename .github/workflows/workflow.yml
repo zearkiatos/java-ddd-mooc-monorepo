@@ -20,3 +20,4 @@ jobs:
 
     - name: Check 🧪
       run: make test
+

@@ -1,6 +1,9 @@
 package tv.codely.mooc.courses.infrastructure;
 
 import tv.codely.mooc.courses.CoursesModuleInfrastructureTestCase;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Assert;
@@ -20,23 +23,30 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 final class MySqlCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
     @Test
     void save_a_valid_course() {
-        Course course = CourseMother.random();
-
-        mySqlCourseRepository.save(course);
-
+        for (Course course: courses()) {
+            mySqlCourseRepository.save(course);
+        }
     }
 
     @Test
     void search_an_existing_course() {
-        Course course = CourseMother.random();
 
-        mySqlCourseRepository.save(course);
-
-        assertEquals(Optional.of(course), mySqlCourseRepository.search(course.id()));
+        for(Course course: courses()) {
+            mySqlCourseRepository.save(course);
+            assertEquals(Optional.of(course), mySqlCourseRepository.search(course.id()));
+        }
     }
 
     @Test
     void not_find_a_non_existing_course() throws Exception {
-        assertFalse(mySqlCourseRepository.search(CourseIdMother.random()).isPresent());
+        for(Course course: courses()) {
+            assertFalse(mySqlCourseRepository.search(course.id()).isPresent());
+        }
+    }
+
+    private List<? extends Course> courses() {
+        return Arrays.asList(
+            CourseMother.random()
+        );
     }
 }
