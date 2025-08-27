@@ -10,5 +10,5 @@ import tv.codely.apps.shared.controller.RequestTestCase;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = MoocBackendApplication.class)
 @ActiveProfiles("test")
-public abstract class MoocRequestTestCase extends RequestTestCase {
+public abstract class MoocRequestTestCase extends ApplicationTestCase {
 }

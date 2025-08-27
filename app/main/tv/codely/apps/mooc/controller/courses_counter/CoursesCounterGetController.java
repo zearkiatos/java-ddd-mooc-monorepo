@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public final class CoursesCounterGetController {
-    CoursesCounterFinder finder;
+    CoursesCounterFinderShould finder;
 
-    public CoursesCounterGetController(CoursesCounterFinder finder) {
+    public CoursesCounterGetController(CoursesCounterFinderShould finder) {
         this.finder = finder;
     }
 
