@@ -10,18 +10,28 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
+import javax.transaction.Transactional;
+
+import tv.codely.shared.domain.bus.event.DomainEvent;
+import tv.codely.shared.domain.bus.event.EventBus;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Arrays;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public abstract class RequestTestCase {
+@Transactional
+public abstract class ApplicationTestCase {
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private EventBus eventBus;
 
     protected void assertResponse(String endpoint, Integer expectedStatusCode, String expectedResponse) throws Exception {
         System.out.println("testing endpoint: " + endpoint);
@@ -38,5 +48,9 @@ public abstract class RequestTestCase {
 			.andExpect(status().is(expectedStatusCode))
 			.andExpect(content().string(""));
 	}
+
+    protected void givenISendEventsToTheBus(DomainEvent<?>... domainEvents) {
+        eventBus.publish(Arrays.asList(domainEvents));
+    }
 
 }
