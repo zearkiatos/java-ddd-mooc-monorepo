@@ -1,5 +1,6 @@
 package tv.codely.mooc.courses_counter.application.find;
 
+import tv.codely.mooc.courses_counter.domain.CoursesCounterRepository;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable

@@ -9,8 +9,8 @@ import tv.codely.shared.domain.ServiceInjectable;
 public final class IncrementCoursesCounterOnCourseCreated {
     private final CoursesCounterIncrementer incrementer;
 
-    public IncrementCoursesCounterOnCourseCreated(CoursesCounnterIncrementer incrementer) {
-        this.incremnter = incrementer;
+    public IncrementCoursesCounterOnCourseCreated(CoursesCounterIncrementer incrementer) {
+        this.incrementer = incrementer;
     }
 
     @EventListener

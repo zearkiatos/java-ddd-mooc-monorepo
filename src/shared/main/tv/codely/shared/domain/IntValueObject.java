@@ -1,4 +1,4 @@
-package src.shared.main.tv.codely.shared.domain;
+package tv.codely.shared.domain;
 
 import java.util.Objects;
 
