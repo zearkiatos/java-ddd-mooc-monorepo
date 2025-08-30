@@ -2,15 +2,18 @@ package tv.codely.apps.mooc.controller.courses_counter;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import tv.codely.mooc.courses_counter.application.find.CoursesCounterResponse;
+import tv.codely.mooc.courses_counter.application.find.CoursesCounterFinder;
+
 import java.util.HashMap;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public final class CoursesCounterGetController {
-    CoursesCounterFinderShould finder;
+    CoursesCounterFinder finder;
 
-    public CoursesCounterGetController(CoursesCounterFinderShould finder) {
+    public CoursesCounterGetController(CoursesCounterFinder finder) {
         this.finder = finder;
     }
 
