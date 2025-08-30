@@ -5,11 +5,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import java.util.UUID;
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
-import tv.codely.apps.shared.controller.RequestTestCase;
+import tv.codely.apps.shared.controller.ApplicationTestCase;
 
 @ContextConfiguration(classes = MoocBackendApplication.class)
 @ActiveProfiles("test")
-final class StudentsPutControllerShould extends RequestTestCase{
+final class StudentsPutControllerShould extends ApplicationTestCase{
     @Test
     void create_a_valid_student() throws Exception {
         String studentId = UUID.randomUUID().toString();
