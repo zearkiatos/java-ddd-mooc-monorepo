@@ -7,21 +7,25 @@ import tv.codely.mooc.students.domain.StudentName;
 import tv.codely.mooc.students.domain.StudentRepository;
 import tv.codely.mooc.students.domain.StudentSurname;
 import tv.codely.shared.domain.ServiceInjectable;
+import tv.codely.shared.domain.bus.event.EventBus;
 
 @ServiceInjectable
 public final class StudentCreator {
     private StudentRepository repository;
-    public StudentCreator(StudentRepository repository) {
+    private final EventBus eventBus;
+    public StudentCreator(StudentRepository repository, EventBus eventBus) {
         this.repository = repository;
+        this.eventBus = eventBus;
     }
     public void create(CreateStudentRequest request) {
-        Student student = new Student(
-            new StudentId(request.id()),
-            new StudentName(request.name()),
-            new StudentSurname(request.surname()),
-            new StudentEmail(request.email())
-        );
+        StudentId id = new StudentId(request.id());
+        StudentName name = new StudentName(request.name());
+        StudentSurname surname = new StudentSurname(request.surname());
+        StudentEmail email = new StudentEmail(request.email());
+
+        Student student = Student.create(id, name, surname, email);
 
         repository.save(student);
+        eventBus.publish(student.pullDomainEvents());
     }
 }

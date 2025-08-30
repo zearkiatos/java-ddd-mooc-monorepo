@@ -2,7 +2,9 @@ package tv.codely.mooc.students.domain;
 
 import java.util.Objects;
 
-public class Student {
+import tv.codely.shared.domain.AggregateRoot;
+
+public final class Student extends AggregateRoot {
     private StudentId id;
     private StudentName name;
     private StudentSurname surname;
@@ -13,6 +15,18 @@ public class Student {
         this.name = name;
         this.surname = surname;
         this.email = email;
+    }
+
+    public static Student create(StudentId id, StudentName name, StudentSurname surname, StudentEmail email) {
+        Student student = new Student();
+        student.id = id;
+        student.name = name;
+        student.surname = surname;
+        student.email = email;
+
+        student.record(new StudentCreatedDomainEvent(student.getId(), student.name().toString(), student.surname().toString(), student.email().toString()));
+
+        return student;
     }
 
     // Default constructor for Hibernate
