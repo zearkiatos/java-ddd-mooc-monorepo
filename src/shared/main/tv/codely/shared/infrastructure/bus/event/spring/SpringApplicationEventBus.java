@@ -1,4 +1,4 @@
-package tv.codely.shared.infrastructure.bus.event;
+package tv.codely.shared.infrastructure.bus.event.spring;
 
 import org.springframework.context.ApplicationEventPublisher;
 import java.util.List;

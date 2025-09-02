@@ -30,6 +30,13 @@ public final class CourseCreatedDomainEvent extends DomainEvent<CourseCreatedDom
         this.duration = duration;
     }
 
+    public CourseCreatedDomainEvent() {
+        super(null);
+
+        this.name     = null;
+        this.duration = null;
+    }
+
     @Override
     public String eventName() {
         return "course.created";

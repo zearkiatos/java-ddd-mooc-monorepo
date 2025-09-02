@@ -1,10 +1,11 @@
-package tv.codely.shared.domain.bus.event.mysql;
+package tv.codely.shared.infrastructure.bus.event.mysql;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
+import org.springframework.context.annotation.Primary;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
@@ -12,7 +13,7 @@ import tv.codely.shared.domain.Utils;
 import tv.codely.shared.infrastructure.ServiceInjectable;
 
 
-
+@Primary
 @ServiceInjectable
 public final class MySqlEventBus implements EventBus {
     private static SessionFactory sessionFactory;
