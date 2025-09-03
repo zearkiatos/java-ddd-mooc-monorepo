@@ -7,8 +7,10 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.sql.Timestamp;
 
 import javax.transaction.Transactional;
+import org.hibernate.SessionFactory;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
@@ -16,11 +18,11 @@ import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.domain.Utils;
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 import tv.codely.shared.infrastructure.bus.event.spring.SpringApplicationEventBus;
-import tv.codely.shared.infrastructure.ServiceInjectable;
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 
+
 @ServiceInjectable
-public class MySqlDomainEventsConsumer implements EventBus {
+public class MySqlDomainEventsConsumer {
     private final SessionFactory sessionFactory;
     private final DomainEventsInformation domainEventsInformation;
     private final SpringApplicationEventBus bus;
@@ -42,10 +44,10 @@ public class MySqlDomainEventsConsumer implements EventBus {
 
         query.setParameter("chunk", CHUNKS);
 
-        List<Object[]> evenets = query.list();
+        List<Object[]> events = query.list();
 
         try {
-            for (Object[] eveny : events) {
+            for (Object[] event : events) {
                 executeSubscribers(
                         (String) event[0],
                         (String) event[1],
@@ -62,7 +64,7 @@ public class MySqlDomainEventsConsumer implements EventBus {
     private void executeSubscribers(
             String id,
             String aggregateId,
-            String name,
+            String eventName,
             String body,
             Timestamp occurredOn)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
@@ -77,7 +79,7 @@ public class MySqlDomainEventsConsumer implements EventBus {
                 String.class
         );
 
-        Object domainEvent = fromPrimitivesMethid.invoke(
+        Object domainEvent = fromPrimitivesMethod.invoke(
             nullInstance,
             aggregateId,
             Utils.jsonDecode(body),

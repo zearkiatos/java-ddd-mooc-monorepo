@@ -41,4 +41,12 @@ public abstract class DomainEvent<T extends DomainEvent<?>> {
         return aggregateId;
     }
 
+    public String eventId() {
+        return eventId;
+    }
+
+    public String occurredOn() {
+        return occurredOn;
+    }
+
 }

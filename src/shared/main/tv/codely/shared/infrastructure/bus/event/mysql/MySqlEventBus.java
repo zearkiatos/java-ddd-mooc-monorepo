@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.domain.Utils;
-import tv.codely.shared.infrastructure.ServiceInjectable;
+import tv.codely.shared.domain.ServiceInjectable;
 
 
 @Primary
@@ -27,7 +27,7 @@ public final class MySqlEventBus implements EventBus {
         events.forEach(this::publish);
     }
 
-    private void publish(DomainEvent<?> event) {
+    private void publish(DomainEvent<?> domainEvent) {
         String id = domainEvent.eventId();
         String aggregateId = domainEvent.aggregateId();
         String name = domainEvent.eventName();

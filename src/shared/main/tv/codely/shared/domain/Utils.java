@@ -2,6 +2,7 @@ package tv.codely.shared.domain;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -9,11 +10,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class Utils {
+
     public static String dateToString(LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
-    public static jsonEncode(HashMap<String, Serializable> map) {
+    public static String dateToString(Timestamp timestamp) {
+        return dateToString(timestamp.toLocalDateTime());
+    }
+
+    public static String jsonEncode(HashMap<String, Serializable> map) {
         try {
             return new ObjectMapper().writeValueAsString(map);
         }

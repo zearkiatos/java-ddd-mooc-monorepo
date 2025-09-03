@@ -38,7 +38,7 @@ public final class StudentCreatedDomainEvent extends DomainEvent<StudentCreatedD
     }
 
     @Override
-    protected java.util.HashMap<String, java.io.Serializable> toPrimitives() {
+    public java.util.HashMap<String, java.io.Serializable> toPrimitives() {
         return new java.util.HashMap<String, java.io.Serializable>() {{
             put("name", name);
             put("surname", surname);
@@ -47,7 +47,7 @@ public final class StudentCreatedDomainEvent extends DomainEvent<StudentCreatedD
     }
 
     @Override
-    protected StudentCreatedDomainEvent fromPrimitives(
+    public StudentCreatedDomainEvent fromPrimitives(
         String aggregateId,
         java.util.HashMap<String, java.io.Serializable> body,
         String eventId,

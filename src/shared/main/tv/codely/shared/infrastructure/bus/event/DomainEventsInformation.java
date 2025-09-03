@@ -7,7 +7,6 @@ import org.reflections.Reflections;
 
 import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.domain.bus.event.DomainEvent;
-import tv.codely.shared.infrastructure.ServiceInjectable;
 
 
 @ServiceInjectable
