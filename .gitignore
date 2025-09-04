@@ -25,3 +25,4 @@ secrets/
 .docker/
 docker-compose.override.yml
 data-test
+*.class

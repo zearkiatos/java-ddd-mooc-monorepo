@@ -11,6 +11,7 @@ import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
 import tv.codely.mooc.courses.domain.CourseIdMother;
 import tv.codely.mooc.courses_counter.CoursesCounterModuleUnitTestCase;
 import tv.codely.mooc.courses_counter.application.increment.IncrementCoursesCounterOnCourseCreated;
+import tv.codely.mooc.courses_counter.domain.CoursesCounterMother;
 
 final class IncrementCoursesCounterOnCourseCreatedShould extends CoursesCounterModuleUnitTestCase {
     IncrementCoursesCounterOnCourseCreated subscriber;

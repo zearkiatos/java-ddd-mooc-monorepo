@@ -5,6 +5,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpMethod;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,6 +15,7 @@ import javax.transaction.Transactional;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
+import tv.codely.shared.infrastructure.bus.event.mysql.MySqlDomainEventsConsumer;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -32,6 +34,9 @@ public abstract class ApplicationTestCase {
 
     @Autowired
     private EventBus eventBus;
+
+    @MockBean
+    private MySqlDomainEventsConsumer mySqlDomainEventsConsumer;
 
     protected void assertResponse(String endpoint, Integer expectedStatusCode, String expectedResponse) throws Exception {
         System.out.println("testing endpoint: " + endpoint);

@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEvent;
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
-import tv.codely.shared.infrastructure.MoocContextInfrastructureTestCase;
+import tv.codely.mooc.MoocContextInfrastructureTestCase;
 import tv.codely.shared.infrastructure.bus.event.mysql.MySqlDomainEventsConsumer;
 import tv.codely.shared.infrastructure.bus.event.mysql.MySqlEventBus;
 

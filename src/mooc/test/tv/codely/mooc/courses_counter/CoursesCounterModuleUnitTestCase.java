@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 
 import java.util.Optional;
 
+import tv.codely.mooc.courses_counter.domain.CoursesCounter;
+import tv.codely.mooc.courses_counter.domain.CoursesCounterRepository;
 import tv.codely.shared.infrastructure.UnitTestCase;
 
 public abstract class CoursesCounterModuleUnitTestCase extends UnitTestCase {

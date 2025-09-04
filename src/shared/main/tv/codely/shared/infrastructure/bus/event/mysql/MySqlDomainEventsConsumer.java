@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 
 import javax.transaction.Transactional;
 import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Profile;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
@@ -21,6 +22,7 @@ import tv.codely.shared.infrastructure.bus.event.spring.SpringApplicationEventBu
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 
 @ServiceInjectable
+@Profile({"local"})
 public class MySqlDomainEventsConsumer {
     private final SessionFactory sessionFactory;
     private final DomainEventsInformation domainEventsInformation;

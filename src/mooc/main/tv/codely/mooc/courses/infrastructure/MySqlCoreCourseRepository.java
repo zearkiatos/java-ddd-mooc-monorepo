@@ -15,7 +15,7 @@ import tv.codely.mooc.courses.domain.CourseName;
 
 import java.sql.*;
 
-@ServiceInjectable
+// @ServiceInjectable
 public class MySqlCoreCourseRepository implements CourseRepository {
      private final DataSource dataSource;
 

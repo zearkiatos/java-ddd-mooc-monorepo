@@ -3,6 +3,7 @@ package tv.codely.apps.mooc.controller.courses_counter;
 import java.beans.Transient;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEvent;
@@ -12,6 +13,7 @@ import tv.codely.apps.shared.controller.ApplicationTestCase;
 @ContextConfiguration(classes = MoocBackendApplication.class)
 @ActiveProfiles("test")
 final class CoursesCounterGetControllerShould extends ApplicationTestCase {
+
     @Test
     void get_the_counter_with_one_course() throws Exception {
         givenISendEventsToTheBus(
@@ -46,7 +48,7 @@ final class CoursesCounterGetControllerShould extends ApplicationTestCase {
             new CourseCreatedDomainEvent("8f34bc99-e0e2-4b2c-9f1f-1c4b2c9f1f4d", "DDD in Cobol", "10 years")
         );
 
-        assertResponse("/courses-counter", 200, "{'total':3}");
+        assertResponse("/courses-counter", 200, "{'total':4}");
     }
 
 

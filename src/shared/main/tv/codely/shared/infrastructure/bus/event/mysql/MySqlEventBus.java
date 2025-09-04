@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Profile;
 import org.hibernate.query.NativeQuery;
 import org.springframework.context.annotation.Primary;
 
@@ -14,6 +15,7 @@ import tv.codely.shared.domain.ServiceInjectable;
 
 
 @Primary
+@Profile({"local"})
 @ServiceInjectable
 public final class MySqlEventBus implements EventBus {
     private static SessionFactory sessionFactory;
