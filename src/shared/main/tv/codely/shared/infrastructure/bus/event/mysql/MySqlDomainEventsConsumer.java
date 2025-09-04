@@ -20,13 +20,13 @@ import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 import tv.codely.shared.infrastructure.bus.event.spring.SpringApplicationEventBus;
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 
-
 @ServiceInjectable
 public class MySqlDomainEventsConsumer {
     private final SessionFactory sessionFactory;
     private final DomainEventsInformation domainEventsInformation;
     private final SpringApplicationEventBus bus;
     private final Integer CHUNKS = 200;
+    private Boolean isStopped = false;
 
     public MySqlDomainEventsConsumer(
             SessionFactory sessionFactory,
@@ -37,27 +37,35 @@ public class MySqlDomainEventsConsumer {
         this.bus = bus;
     }
 
+    public void stop() {
+        isStopped = true;
+    }
+
     @Transactional
     public void consume() {
-        NativeQuery query = sessionFactory.getCurrentSession().createSQLQuery(
-                "SELECT * FROM domain_events ORDER BY ocurred_on ASC LIMIT :chunk");
+        while (!isStopped) {
+            NativeQuery query = sessionFactory.getCurrentSession().createSQLQuery(
+                    "SELECT * FROM domain_events ORDER BY ocurred_on ASC LIMIT :chunk");
 
-        query.setParameter("chunk", CHUNKS);
+            query.setParameter("chunk", CHUNKS);
 
-        List<Object[]> events = query.list();
+            List<Object[]> events = query.list();
 
-        try {
-            for (Object[] event : events) {
-                executeSubscribers(
-                        (String) event[0],
-                        (String) event[1],
-                        (String) event[2],
-                        (String) event[3],
-                        (Timestamp) event[4]);
+            try {
+                for (Object[] event : events) {
+                    executeSubscribers(
+                            (String) event[0],
+                            (String) event[1],
+                            (String) event[2],
+                            (String) event[3],
+                            (Timestamp) event[4]);
+                }
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException
+                    | InstantiationException e) {
+                e.printStackTrace();
             }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException
-                | InstantiationException e) {
-            e.printStackTrace();
+
+            sessionFactory.getCurrentSession().clear();
         }
     }
 
@@ -76,16 +84,14 @@ public class MySqlDomainEventsConsumer {
                 String.class,
                 HashMap.class,
                 String.class,
-                String.class
-        );
+                String.class);
 
         Object domainEvent = fromPrimitivesMethod.invoke(
-            nullInstance,
-            aggregateId,
-            Utils.jsonDecode(body),
-            id,
-            Utils.dateToString(occurredOn)
-        );
+                nullInstance,
+                aggregateId,
+                Utils.jsonDecode(body),
+                id,
+                Utils.dateToString(occurredOn));
 
         bus.publish(Collections.singletonList((DomainEvent<?>) domainEvent));
 
