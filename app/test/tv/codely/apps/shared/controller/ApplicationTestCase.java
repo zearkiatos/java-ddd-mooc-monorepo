@@ -1,6 +1,7 @@
 package tv.codely.apps.shared.controller;
 
 import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,12 +12,19 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
+
+import tv.codely.mooc.courses_counter.infrastructure.InMemoryCoursesCounterRepository;
+
+import org.hibernate.SessionFactory;
+
 import javax.transaction.Transactional;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.infrastructure.bus.event.mysql.MySqlDomainEventsConsumer;
-
+import tv.codely.shared.domain.UuidGenerator;
+import tv.codely.mooc.courses_counter.domain.CoursesCounterRepository;
+import tv.codely.mooc.courses_counter.application.increment.CoursesCounterIncrementer;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,6 +45,25 @@ public abstract class ApplicationTestCase {
 
     @MockBean
     private MySqlDomainEventsConsumer mySqlDomainEventsConsumer;
+
+    @MockBean
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    private UuidGenerator uuidGenerator;
+
+    @Autowired
+    private CoursesCounterRepository coursesCounterRepository;
+
+   @Autowired
+    protected CoursesCounterIncrementer coursesCounterIncrementer;
+
+    @BeforeEach
+    public void setUp() {
+        if (coursesCounterRepository instanceof InMemoryCoursesCounterRepository) {
+            ((InMemoryCoursesCounterRepository) coursesCounterRepository).clear();
+        }
+    }
 
     protected void assertResponse(String endpoint, Integer expectedStatusCode, String expectedResponse) throws Exception {
         System.out.println("testing endpoint: " + endpoint);
