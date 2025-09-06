@@ -22,7 +22,7 @@ import tv.codely.shared.infrastructure.bus.event.spring.SpringApplicationEventBu
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 
 @ServiceInjectable
-@Profile({"local"})
+@Profile({"local", "test"})
 public class MySqlDomainEventsConsumer {
     private final SessionFactory sessionFactory;
     private final DomainEventsInformation domainEventsInformation;

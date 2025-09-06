@@ -17,7 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 @ServiceInjectable
 @Profile("local")
-public final class MySqlCoursesCounterRepository extends HibernateRepository<CoursesCounter> implements CoursesCounterRepository {
+public class MySqlCoursesCounterRepository extends HibernateRepository<CoursesCounter> implements CoursesCounterRepository {
     public MySqlCoursesCounterRepository(SessionFactory sessionFactory) {
         super(sessionFactory, CoursesCounter.class);
     }
