@@ -7,7 +7,7 @@ import tv.codely.shared.domain.UuidGenerator;
 import java.util.UUID;
 
 @ServiceInjectable
-@Profile({"test"})
+@Profile({"test", "local"})
 public final class JavaUuidGenerator implements UuidGenerator {
     @Override
     public String generate() {

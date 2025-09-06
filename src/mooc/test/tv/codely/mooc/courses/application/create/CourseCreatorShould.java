@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import tv.codely.mooc.courses.CoursesModuleUnitTestCase;
 import tv.codely.mooc.courses.domain.Course;
+import tv.codely.mooc.courses.domain.CourseCreatedDomainEvent;
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
 import tv.codely.mooc.courses.domain.CourseMother;
 
