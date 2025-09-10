@@ -1,5 +1,6 @@
 package tv.codely.mooc.courses.application.create;
 
+import org.springframework.transaction.annotation.Transactional;
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseDuration;
 import tv.codely.mooc.courses.domain.CourseId;
@@ -9,7 +10,7 @@ import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.domain.bus.event.EventBus;
 
 @ServiceInjectable
-public final class CourseCreator {
+public class CourseCreator {
     private CourseRepository repository;
     private final EventBus eventBus;
 
@@ -18,6 +19,7 @@ public final class CourseCreator {
         this.eventBus = eventBus;
     }
 
+    @Transactional
     public void create(CreateCourseRequest request) {
         CourseId id = new CourseId(request.id());
         CourseName name = new CourseName(request.name());

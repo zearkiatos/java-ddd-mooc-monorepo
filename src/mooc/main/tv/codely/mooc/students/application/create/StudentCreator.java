@@ -26,6 +26,6 @@ public final class StudentCreator {
         Student student = Student.create(id, name, surname, email);
 
         repository.save(student);
-        eventBus.publish(student.pullDomainEvents());
+        // eventBus.publish(student.pullDomainEvents());
     }
 }
