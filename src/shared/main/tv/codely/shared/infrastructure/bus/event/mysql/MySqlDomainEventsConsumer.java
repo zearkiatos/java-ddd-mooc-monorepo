@@ -47,7 +47,7 @@ public class MySqlDomainEventsConsumer {
     public void consume() {
         while (!isStopped) {
             NativeQuery query = sessionFactory.getCurrentSession().createSQLQuery(
-                    "SELECT * FROM domain_events ORDER BY ocurred_on ASC LIMIT :chunk");
+                    "SELECT * FROM domain_events ORDER BY occurred_on ASC LIMIT :chunk");
 
             query.setParameter("chunk", CHUNKS);
 
