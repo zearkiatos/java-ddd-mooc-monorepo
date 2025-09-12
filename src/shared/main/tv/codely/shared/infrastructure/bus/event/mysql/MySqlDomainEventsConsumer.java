@@ -61,6 +61,9 @@ public class MySqlDomainEventsConsumer {
                             (String) event[2],
                             (String) event[3],
                             (Timestamp) event[4]);
+                    System.out.println("Uuid" + (String) event[0]);
+                    System.out.println("Topic name" + (String) event[2]);
+                    System.out.println("Processed event " + (String) event[3]);
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException
                     | InstantiationException e) {
