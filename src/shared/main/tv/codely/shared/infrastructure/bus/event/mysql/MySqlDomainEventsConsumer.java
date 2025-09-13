@@ -47,7 +47,7 @@ public class MySqlDomainEventsConsumer {
     public void consume() {
         while (!isStopped) {
             NativeQuery query = sessionFactory.getCurrentSession().createSQLQuery(
-                    "SELECT * FROM domain_events ORDER BY ocurred_on ASC LIMIT :chunk");
+                    "SELECT * FROM domain_events ORDER BY occurred_on ASC LIMIT :chunk");
 
             query.setParameter("chunk", CHUNKS);
 
@@ -61,6 +61,9 @@ public class MySqlDomainEventsConsumer {
                             (String) event[2],
                             (String) event[3],
                             (Timestamp) event[4]);
+                    System.out.println("Uuid" + (String) event[0]);
+                    System.out.println("Topic name" + (String) event[2]);
+                    System.out.println("Processed event " + (String) event[3]);
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException
                     | InstantiationException e) {

@@ -1,6 +1,9 @@
 package tv.codely.mooc.students.domain;
 
 import java.util.Objects;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Objects;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 
@@ -8,6 +11,14 @@ public final class StudentCreatedDomainEvent extends DomainEvent<StudentCreatedD
     private final String name;
     private final String surname;
     private final String email;
+
+    public StudentCreatedDomainEvent() {
+        super(null);
+
+        this.name     = null;
+        this.surname  = null;
+        this.email = null;
+    }
 
     public StudentCreatedDomainEvent(String aggregateId, String name, String surname, String email) {
         super(aggregateId);
