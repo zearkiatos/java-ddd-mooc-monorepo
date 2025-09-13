@@ -6,7 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.apps.shared.controller.ApplicationTestCase;
 
-@ContextConfiguration(classes = BackofficeBackendApplication.class)
+@ContextConfiguration(classes = MoocBackendApplication.class)
 @ActiveProfiles("test")
 final class CoursesPutControllerShould extends ApplicationTestCase {
     @Test

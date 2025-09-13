@@ -7,7 +7,7 @@ import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.mooc.courses.domain.CourseRepository;
 import tv.codely.shared.infrastructure.InfrastructureTestCase;
 
-@ContextConfiguration(classes = BackofficeBackendApplication.class)
+@ContextConfiguration(classes = MoocBackendApplication.class)
 @SpringBootTest
 public abstract class MoocContextInfrastructureTestCase extends InfrastructureTestCase {
     @Autowired

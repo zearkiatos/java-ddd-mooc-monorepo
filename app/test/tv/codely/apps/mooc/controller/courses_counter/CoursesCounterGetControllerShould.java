@@ -14,7 +14,7 @@ import tv.codely.mooc.courses_counter.application.increment.CoursesCounterIncrem
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.apps.shared.controller.ApplicationTestCase;
 
-@ContextConfiguration(classes = BackofficeBackendApplication.class)
+@ContextConfiguration(classes = MoocBackendApplication.class)
 @ActiveProfiles("test")
 final class CoursesCounterGetControllerShould extends ApplicationTestCase {
 
