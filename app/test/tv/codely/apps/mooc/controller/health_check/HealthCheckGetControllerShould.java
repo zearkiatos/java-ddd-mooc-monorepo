@@ -6,7 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.apps.shared.controller.ApplicationTestCase;
 
-@ContextConfiguration(classes = MoocBackendApplication.class)
+@ContextConfiguration(classes = BackofficeBackendApplication.class)
 final class HealthCheckGetControllerShould extends ApplicationTestCase {
     @Test
     void check_health_check_is_working() throws Exception {

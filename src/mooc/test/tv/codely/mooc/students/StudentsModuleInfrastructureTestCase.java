@@ -12,7 +12,7 @@ import tv.codely.mooc.students.infrastructure.InMemoryStudentRepository;
 import tv.codely.shared.infrastructure.InfrastructureTestCase;
 import tv.codely.mooc.MoocContextInfrastructureTestCase;
 
-@ContextConfiguration(classes=MoocBackendApplication.class)
+@ContextConfiguration(classes=BackofficeBackendApplication.class)
 @SpringBootTest
 public abstract class StudentsModuleInfrastructureTestCase extends MoocContextInfrastructureTestCase {
 

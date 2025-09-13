@@ -20,7 +20,7 @@ import tv.codely.shared.infrastructure.InfrastructureTestCase;
 
 import tv.codely.mooc.courses_counter.application.increment.CoursesCounterIncrementer;
 
-@ContextConfiguration(classes = MoocBackendApplication.class)
+@ContextConfiguration(classes = BackofficeBackendApplication.class)
 @SpringBootTest
 @ActiveProfiles("test")
 @Transactional

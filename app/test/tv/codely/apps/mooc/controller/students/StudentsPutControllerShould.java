@@ -7,7 +7,7 @@ import java.util.UUID;
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.apps.shared.controller.ApplicationTestCase;
 
-@ContextConfiguration(classes = MoocBackendApplication.class)
+@ContextConfiguration(classes = BackofficeBackendApplication.class)
 @ActiveProfiles("test")
 final class StudentsPutControllerShould extends ApplicationTestCase{
     @Test
