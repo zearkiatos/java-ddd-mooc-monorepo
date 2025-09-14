@@ -3,7 +3,7 @@ package tv.codely.shared.infrastructure.bus.event.rabbitmq;
 import java.util.List;
 
 import org.springframework.amqp.AmqpException;
-import tv.codely.domain.ServiceInjectable;
+import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
 
@@ -23,7 +23,6 @@ public class RabbitMqEventBus implements EventBus {
         events.forEach(this::publish);
     }
 
-    @Override
     public void publish(DomainEvent<?> domainEvent) {
         try {
             publisher.publish(domainEvent, exchangeName);

@@ -6,7 +6,7 @@ import org.springframework.amqp.core.MessagePropertiesBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.infrastructure.bus.event.DomainEventJsonSerializer;
-import tv.codely.domain.ServiceInjectable;
+import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
 public final class RabbitMqPublisher {
