@@ -7,9 +7,10 @@
 
     <class name="tv.codely.mooc.courses_counter.domain.CoursesCounter" table="courses_counter">
 
-        <composite-id name="id" class="tv.codely.mooc.courses_counter.domain.CoursesCounterId" access="field">
-            <key-property column="id" name="value" length="36" access="field"/>
-        </composite-id>
+        <id name="idAsString" column="id" access="property">
+            <type name="string"/>
+            <generator class="assigned"/>
+        </id>
 
         <component name="total" class="tv.codely.mooc.courses_counter.domain.CoursesCounterTotal" access="field">
             <property name="value" column="total" type="integer" access="field" />

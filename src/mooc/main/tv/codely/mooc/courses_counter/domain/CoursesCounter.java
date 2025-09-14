@@ -27,6 +27,15 @@ public final class CoursesCounter {
         return id;
     }
 
+    // Hibernate getter/setter for id conversion
+    private String getIdAsString() {
+        return id != null ? id.value() : null;
+    }
+
+    private void setIdAsString(String value) {
+        this.id = value != null ? new CoursesCounterId(value) : null;
+    }
+
     public CoursesCounterTotal total() {
         return total;
     }
