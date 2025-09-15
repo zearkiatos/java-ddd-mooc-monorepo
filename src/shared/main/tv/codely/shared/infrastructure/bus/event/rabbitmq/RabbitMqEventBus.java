@@ -8,7 +8,7 @@ import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
 
 
-@ServiceInjectable
+// @ServiceInjectable
 public class RabbitMqEventBus implements EventBus {
     private final RabbitMqPublisher publisher;
     private final String exchangeName;
