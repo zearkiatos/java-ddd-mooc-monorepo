@@ -14,7 +14,6 @@ import tv.codely.shared.domain.Utils;
 import tv.codely.shared.domain.ServiceInjectable;
 
 
-@Primary
 @Profile({"local"})
 @ServiceInjectable
 public final class MySqlEventBus implements EventBus {
