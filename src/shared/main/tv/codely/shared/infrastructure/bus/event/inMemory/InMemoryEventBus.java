@@ -3,13 +3,14 @@ package tv.codely.shared.infrastructure.bus.event.inMemory;
 import java.util.List;
 import org.springframework.context.annotation.Primary;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.ServiceInjectable;
 
-@SessionInjectable
+// @ServiceInjectable
 public final class InMemoryEventBus implements EventBus {
     private List<DomainEvent<?>> domainEventRepository = new ArrayList<>();
     @Override

@@ -23,9 +23,9 @@ public final class MySqlEventBus implements EventBus {
     private static SessionFactory sessionFactory;
     private final InMemoryEventBus failoverPublisher;
 
-    public MySqlEventBus(SessionFactory sessionFactory, InMemoryEventBus failoverPublisher) {
+    public MySqlEventBus(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-        this.failoverPublisher = failoverPublisher;
+        this.failoverPublisher = new InMemoryEventBus();
     }
 
     @Override
@@ -55,7 +55,7 @@ public final class MySqlEventBus implements EventBus {
 
             query.executeUpdate();
         }
-        catch (AmqpException | Exception e) {
+        catch (AmqpException e) {
            failoverPublisher.publish(Collections.singletonList(domainEvent));
         }
 
