@@ -71,6 +71,11 @@ $ curl --location --request PUT 'http://localhost:8080/videos/8f51c8e9-8d9b-4e0e
 201
 ```
 
+# RabbitMQ architecture simulator
+
+![rabbitmq-architecture](https://github.com/user-attachments/assets/fdbf1ac3-f64b-4e38-99d7-d283f8eee981)
+
+
 
 <p align="center">
   <a href="https://codely.com">
