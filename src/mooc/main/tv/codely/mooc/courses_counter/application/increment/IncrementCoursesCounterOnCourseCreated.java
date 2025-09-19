@@ -4,8 +4,10 @@ import org.springframework.context.event.EventListener;
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEvent;
 import tv.codely.mooc.courses.domain.CourseId;
 import tv.codely.shared.domain.ServiceInjectable;
+import tv.codely.shared.domain.bus.event.DomainEventSubscriber;
 
 @ServiceInjectable
+@DomainEventSubscriber({CourseCreatedDomainEvent.class})
 public final class IncrementCoursesCounterOnCourseCreated {
     private final CoursesCounterIncrementer incrementer;
 
@@ -13,7 +15,6 @@ public final class IncrementCoursesCounterOnCourseCreated {
         this.incrementer = incrementer;
     }
 
-    @EventListener
     public void on(CourseCreatedDomainEvent event) {
         CourseId courseId = new CourseId(event.aggregateId());
         incrementer.increment(courseId);
