@@ -4,7 +4,11 @@ import org.reflections.Reflections;
 import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.domain.bus.event.DomainEventSubscriber;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @ServiceInjectable
@@ -20,6 +24,14 @@ public final class DomainEventSubscribersInformation {
 
     public Collection<DomainEventSubscriberInformation> all() {
         return information.values();
+    }
+
+    public String[] rabbitMqFormattedNames() {
+        return information.values()
+                          .stream()
+                          .map(DomainEventSubscriberInformation::formatRabbitMqQueueName)
+                          .distinct()
+                          .toArray(String[]::new);
     }
 
     private HashMap<Class<?>, DomainEventSubscriberInformation> formatSubscribers(Set<Class<?>> subscribers) {

@@ -41,4 +41,8 @@ public final class DomainEventSubscriberInformation {
     public List<Class<? extends DomainEvent<?>>> subscribedEvents() {
         return subscribedEvents;
     }
+
+    public String formatRabbitMqQueueName() {
+        return String.format("codelytv.%s.%s.%s", contextName(), moduleName(), Utils.toSnake(className()));
+    }
 }
