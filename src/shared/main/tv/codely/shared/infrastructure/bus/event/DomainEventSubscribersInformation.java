@@ -13,6 +13,13 @@ import java.util.stream.Collectors;
 
 @ServiceInjectable
 public final class DomainEventSubscribersInformation {
+
+    HashMap<Class<?>, DomainEventSubscriberInformation> information;
+
+    public DomainEventSubscribersInformation(HashMap<Class<?>, DomainEventSubscriberInformation> information) {
+        this.information = information;
+    }
+
      public DomainEventSubscribersInformation() {
         this(scanDomainEventSubscribers());
     }

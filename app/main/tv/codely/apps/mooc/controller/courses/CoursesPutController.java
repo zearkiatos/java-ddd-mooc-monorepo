@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tv.codely.mooc.courses.application.create.CourseCreator;
 import tv.codely.mooc.courses.application.create.CreateCourseCommand;
 import tv.codely.shared.domain.bus.command.CommandNotRegisteredError;
+import tv.codely.shared.domain.bus.command.CommandBus;
 @RestController
 public final class CoursesPutController {
     private CommandBus bus;

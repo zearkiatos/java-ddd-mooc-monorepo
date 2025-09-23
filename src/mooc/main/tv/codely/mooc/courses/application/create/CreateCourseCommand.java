@@ -7,7 +7,7 @@ public final class CreateCourseCommand implements Command {
     private String name;
     private String duration;
 
-    public CreateCourseRequest(String id, String name, String duration) {
+    public CreateCourseCommand(String id, String name, String duration) {
         this.id = id;
         this.name = name;
         this.duration = duration;
@@ -28,9 +28,9 @@ public final class CreateCourseCommand implements Command {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CreateCourseRequest)) return false;
+        if (!(o instanceof CreateCourseCommand)) return false;
 
-        CreateCourseRequest course = (CreateCourseRequest) o;
+        CreateCourseCommand course = (CreateCourseCommand) o;
 
         return id.equals(course.id) &&
                name.equals(course.name) &&
