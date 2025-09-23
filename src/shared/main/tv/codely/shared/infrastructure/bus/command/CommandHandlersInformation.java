@@ -3,11 +3,12 @@ package tv.codely.shared.infrastructure.bus.command;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Set;
+import org.reflections.Reflections;
 
-import src.shared.main.tv.codely.shared.domain.bus.command.CommandNotRegisteredError;
+import tv.codely.shared.domain.bus.command.CommandNotRegisteredError;
 import tv.codely.shared.domain.bus.command.Command;
 import tv.codely.shared.domain.bus.command.CommandHandler;
-import tv.codely.shared.infrastructure.ServiceInjectable;
+import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
 public final class CommandHandlersInformation {

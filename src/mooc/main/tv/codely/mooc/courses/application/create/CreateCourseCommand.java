@@ -1,6 +1,8 @@
 package tv.codely.mooc.courses.application.create;
 
-public final class CreateCourseRequest {
+import tv.codely.shared.domain.bus.command.Command;
+
+public final class CreateCourseCommand implements Command {
     private String id;
     private String name;
     private String duration;

@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.ServiceInjectable;
+import tv.codely.shared.domain.Utils;
 
 @ServiceInjectable
 public final class DomainEventJsonDeserializer {
