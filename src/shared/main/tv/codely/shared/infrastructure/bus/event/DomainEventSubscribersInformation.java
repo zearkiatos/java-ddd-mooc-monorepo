@@ -13,13 +13,15 @@ import java.util.stream.Collectors;
 
 @ServiceInjectable
 public final class DomainEventSubscribersInformation {
+
     HashMap<Class<?>, DomainEventSubscriberInformation> information;
 
-    public DomainEventSubscribersInformation() {
-        Reflections   reflections = new Reflections("tv.codely");
-        Set<Class<?>> classes     = reflections.getTypesAnnotatedWith(DomainEventSubscriber.class);
+    public DomainEventSubscribersInformation(HashMap<Class<?>, DomainEventSubscriberInformation> information) {
+        this.information = information;
+    }
 
-        information = formatSubscribers(classes);
+     public DomainEventSubscribersInformation() {
+        this(scanDomainEventSubscribers());
     }
 
     public Collection<DomainEventSubscriberInformation> all() {
@@ -34,7 +36,10 @@ public final class DomainEventSubscribersInformation {
                           .toArray(String[]::new);
     }
 
-    private HashMap<Class<?>, DomainEventSubscriberInformation> formatSubscribers(Set<Class<?>> subscribers) {
+    private static HashMap<Class<?>, DomainEventSubscriberInformation> scanDomainEventSubscribers() {
+        Reflections   reflections = new Reflections("tv.codely");
+        Set<Class<?>> subscribers     = reflections.getTypesAnnotatedWith(DomainEventSubscriber.class);
+
         HashMap<Class<?>, DomainEventSubscriberInformation> subscribersInformation = new HashMap<>();
 
         for (Class<?> subscriberClass : subscribers) {

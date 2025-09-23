@@ -1,6 +1,6 @@
 package tv.codely.apps.mooc.backend.command;
 
-import src.shared.main.tv.codely.shared.infrastructure.bus.event.rabbitmq.RabbitMqDomainEventsConsumer;
+import tv.codely.shared.infrastructure.bus.event.rabbitmq.RabbitMqDomainEventsConsumer;
 import tv.codely.shared.infrastructure.cli.ConsoleCommand;
 
 public final class ConsumeRabbitMqDomainEventsCommand extends ConsoleCommand {

@@ -1,4 +1,4 @@
-package src.shared.main.tv.codely.shared.domain.bus.event;
+package tv.codely.shared.domain.bus.event;
 
 import java.lang.annotation.*;
 

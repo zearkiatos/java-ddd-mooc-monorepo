@@ -1,5 +1,6 @@
 package tv.codely.shared.infrastructure.bus.event;
 
+import tv.codely.shared.domain.Utils;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 
 import java.util.List;

@@ -11,11 +11,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
 import java.util.stream.Collectors;
 
 @Configuration
-private class RabbitMqEventBusConfiguration {
+public class RabbitMqEventBusConfiguration {
     private final DomainEventSubscribersInformation domainEventSubscribersInformation;
     private final DomainEventsInformation           domainEventsInformation;
     private final String                            exchangeName;
@@ -107,12 +106,13 @@ private class RabbitMqEventBusConfiguration {
             return queuesAndBindings;
         }).collect(Collectors.toList());
 
-        private HashMap<String, Object> retryQueueArguments(TopicExchange exchange, String routingKey) {
+    }
+
+    private HashMap<String, Object> retryQueueArguments(TopicExchange exchange, String routingKey) {
         return new HashMap<String, Object>() {{
             put("x-dead-letter-exchange", exchange.getName());
             put("x-dead-letter-routing-key", routingKey);
             put("x-message-ttl", 1000);
         }};
-    }
     }
 }

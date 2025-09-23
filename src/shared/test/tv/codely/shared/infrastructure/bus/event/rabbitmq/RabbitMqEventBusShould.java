@@ -4,13 +4,13 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.Collections;
 
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEvent;
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
 import tv.codely.shared.infrastructure.bus.event.rabbitmq.RabbitMqDomainEventsConsumer;
 import tv.codely.shared.infrastructure.bus.event.rabbitmq.RabbitMqEventBus;
 import tv.codely.mooc.infrastructure.MoocContextInfrastructureTestCase;
+
 
 public final class RabbitMqEventBusShould extends MoocContextInfrastructureTestCase {
     @Autowired
