@@ -2,7 +2,10 @@ package tv.codely.mooc.courses_counter.application.find;
 
 import java.util.Objects;
 
-public final class CoursesCounterResponse {
+import tv.codely.shared.domain.bus.query.Response;
+
+
+public final class CoursesCounterResponse implements Response {
     private Integer total;
 
     public CoursesCounterResponse(Integer total) {
