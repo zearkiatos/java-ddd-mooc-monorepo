@@ -1,4 +1,4 @@
-package tv.codely.shared.infrastructure.bus.event.rabbitmq;
+package tv.codely.mooc.shared.infrastructure.bus.event.rabbitmq;
 
 import java.util.Collections;
 

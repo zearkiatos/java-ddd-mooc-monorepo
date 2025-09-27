@@ -3,6 +3,7 @@ package tv.codely.mooc.courses.application.create;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import tv.codely.mooc.courses.application.create.CourseCreator;
 import tv.codely.mooc.courses.CoursesModuleUnitTestCase;
 import tv.codely.mooc.courses.application.create.CreateCourseCommand;
 import tv.codely.mooc.courses.application.create.CreateCourseCommandHandler;
@@ -22,15 +23,14 @@ final class CreateCourseCommandHandlerShould extends CoursesModuleUnitTestCase {
         handler = new CreateCourseCommandHandler(new CourseCreator(repository, eventBus));
     }
 
-
-
     @Test
-    void create_a_valid_course() throws Exception {
+    void create_a_valid_course() {
         CreateCourseCommand command = CreateCourseCommandMother.random();
-        Course course = CourseMother.fromRequest(request);
+
+        Course                   course      = CourseMother.fromRequest(command);
         CourseCreatedDomainEvent domainEvent = CourseCreatedDomainEventMother.fromCourse(course);
 
-        handler.handle(request);
+        handler.handle(command);
 
         shouldHaveSaved(course);
         shouldHavePublished(domainEvent);

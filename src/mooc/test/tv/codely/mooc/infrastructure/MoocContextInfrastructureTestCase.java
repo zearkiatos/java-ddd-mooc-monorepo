@@ -1,4 +1,4 @@
-package src.mooc.test.tv.codely.mooc.infrastructure;
+package tv.codely.mooc.infrastructure;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;

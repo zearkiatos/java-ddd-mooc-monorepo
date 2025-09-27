@@ -2,30 +2,50 @@ package tv.codely.mooc.courses_counter.application.find;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import tv.codely.mooc.courses_counter.domain.CoursesCounterNotInitialized;
+import tv.codely.mooc.courses_counter.domain.CoursesCounterMother;
+import tv.codely.mooc.courses_counter.application.find.FindCoursesCounterQuery;
+import tv.codely.mooc.courses_counter.application.find.FindCoursesCounterQueryHandler;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import tv.codely.mooc.courses_counter.domain.CoursesCounter;
+import tv.codely.mooc.courses_counter.application.find.CoursesCounterResponse;
+import tv.codely.mooc.courses_counter.application.find.CoursesCounterResponseMother;
+
 
 import tv.codely.mooc.courses_counter.CoursesCounterModuleUnitTestCase;
 import tv.codely.mooc.courses_counter.application.find.CoursesCounterFinder;
 
 public final class FindCoursesCounterQueryHandlerShould extends CoursesCounterModuleUnitTestCase {
-    FindCoursesCounterCounterQueryHandler handler;
+    FindCoursesCounterQueryHandler handler;
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
 
-        handler = new FindCoursesCounterCounterQueryHandler(new CoursesCounterFinder(repository));
+        handler = new FindCoursesCounterQueryHandler(new CoursesCounterFinder(repository));
     }
 
-    @Test
+     @Test
     void it_should_find_an_existing_courses_counter() {
-        CoursesCounter counter = CoursesCounterMother.random();
-        FindCourseCounterQuery query = new FindCoursesCounterQuery();
-        CoursesCounterResponse response = CoursesCounterResponseMother.create(counter.total().value());
+        CoursesCounter          counter  = CoursesCounterMother.random();
+        FindCoursesCounterQuery query    = new FindCoursesCounterQuery();
+        CoursesCounterResponse  response = CoursesCounterResponseMother.create(counter.total().value());
 
         shouldSearch(counter);
 
         assertEquals(response, handler.handle(query));
+    }
+
+    @Test
+    void it_should_throw_an_exception_when_courses_counter_does_not_exists() {
+        FindCoursesCounterQuery query = new FindCoursesCounterQuery();
+
+        shouldSearch();
+
+        assertThrows(CoursesCounterNotInitialized.class, () -> handler.handle(query));
     }
 
 }

@@ -8,7 +8,7 @@ import tv.codely.shared.domain.bus.command.CommandNotRegisteredError;
 import tv.codely.shared.domain.bus.command.CommandHandler;
 import tv.codely.shared.domain.ServiceInjectable;
 
-
+@ServiceInjectable
 public final class InMemoryCommandBus implements CommandBus  {
 
     private final CommandHandlersInformation information;
