@@ -6,5 +6,6 @@ dependencies {
     testImplementation 'net.datafaker:datafaker:1.9.0'
 
     // Only compile-time access to main app classes (like Starter) from root project
+
     testCompileOnly rootProject
 }

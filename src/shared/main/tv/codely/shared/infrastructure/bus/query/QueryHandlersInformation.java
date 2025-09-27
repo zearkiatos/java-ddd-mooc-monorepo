@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Set;
 import org.reflections.Reflections;
 
+import tv.codely.shared.domain.bus.query.QueryNotRegisteredError;
 import tv.codely.shared.domain.bus.query.Query;
 import tv.codely.shared.domain.bus.query.QueryHandler;
-import tv.codely.shared.domain.bus.query.QueryNotRegisteredError;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
@@ -36,7 +36,7 @@ public final class QueryHandlersInformation {
         return handlers;
     }
 
-    public Class<? extends QueryHandler> search(Class<? extends Query> queryClass) throws QueryNotRegisteredError {
+  public Class<? extends QueryHandler> search(Class<? extends Query> queryClass) throws QueryNotRegisteredError {
         Class<? extends QueryHandler> queryHandlerClass = indexedQueryHandlers.get(queryClass);
 
         if (null == queryHandlerClass) {

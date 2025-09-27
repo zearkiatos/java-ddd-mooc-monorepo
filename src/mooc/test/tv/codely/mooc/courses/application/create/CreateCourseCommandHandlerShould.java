@@ -22,8 +22,6 @@ final class CreateCourseCommandHandlerShould extends CoursesModuleUnitTestCase {
         handler = new CreateCourseCommandHandler(new CourseCreator(repository, eventBus));
     }
 
-
-
     @Test
     void create_a_valid_course() throws Exception {
         CreateCourseCommand command = CreateCourseCommandMother.random();

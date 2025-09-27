@@ -37,7 +37,8 @@ public final class DomainEventSubscribersInformation {
     }
 
     private static HashMap<Class<?>, DomainEventSubscriberInformation> scanDomainEventSubscribers() {
-        Reflections   reflections = new Reflections("tv.codely");
+        // Only scan the shared package to avoid circular dependencies when running shared module tests
+        Reflections reflections = new Reflections("tv.codely.shared");
         Set<Class<?>> subscribers     = reflections.getTypesAnnotatedWith(DomainEventSubscriber.class);
 
         HashMap<Class<?>, DomainEventSubscriberInformation> subscribersInformation = new HashMap<>();

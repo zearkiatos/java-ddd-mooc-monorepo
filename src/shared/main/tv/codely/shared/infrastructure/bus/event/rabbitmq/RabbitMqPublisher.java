@@ -8,7 +8,7 @@ import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.infrastructure.bus.event.DomainEventJsonSerializer;
 import tv.codely.shared.domain.ServiceInjectable;
 
-// @ServiceInjectable
+@ServiceInjectable
 public final class RabbitMqPublisher {
     private final RabbitTemplate rabbitTemplate;
 

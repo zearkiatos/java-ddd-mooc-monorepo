@@ -2,6 +2,8 @@ package tv.codely.shared.infrastructure;
 
 import org.junit.jupiter.api.BeforeEach;
 
+import tv.codely.shared.domain.bus.query.QueryBus;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -40,7 +42,7 @@ public abstract class UnitTestCase {
         when(uuidGenerator.generate()).thenReturn(uuid, others);
     }
 
-    public void shouldAsk(tv.codely.shared.domain.bus.query.Query query, Response response) {
+    public void shouldAsk(Query query, Response response) {
         when(queryBus.ask(query)).thenReturn(response);
     }
 }
