@@ -1,6 +1,7 @@
 package tv.codely.shared.infrastructure.bus.event.spring;
 
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Primary;
 import java.util.List;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
@@ -8,6 +9,7 @@ import tv.codely.shared.domain.bus.event.EventBus;
 
 import tv.codely.shared.domain.ServiceInjectable;
 
+@Primary
 @ServiceInjectable
 public class SpringApplicationEventBus implements EventBus {
     private final ApplicationEventPublisher publisher;

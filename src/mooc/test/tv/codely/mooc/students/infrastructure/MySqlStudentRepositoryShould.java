@@ -1,4 +1,4 @@
-package src.mooc.test.tv.codely.mooc.students.infrastructure;
+package tv.codely.mooc.students.infrastructure;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

@@ -5,13 +5,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import tv.codely.shared.infrastructure.bus.event.inMemory.InMemoryEventBus;
 import tv.codely.shared.infrastructure.bus.event.mysql.MySqlDomainEventsConsumer;
 import tv.codely.mooc.courses.domain.CourseRepository;
 
 
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
+import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.infrastructure.InfrastructureTestCase;
 import tv.codely.mooc.courses.infrastructure.InMemoryCourseRepository;
+import tv.codely.mooc.students.domain.StudentRepository;
 import tv.codely.mooc.MoocContextInfrastructureTestCase;
 
 @ContextConfiguration(classes=MoocBackendApplication.class)
@@ -26,5 +29,6 @@ public abstract class CoursesModuleInfrastructureTestCase extends MoocContextInf
     @Autowired
     protected CourseRepository mySqlCourseRepository;
 
+    protected EventBus inMemoryEventBus = new InMemoryEventBus();
 
 }
