@@ -1,12 +1,14 @@
 package tv.codely.mooc.students.application.create;
 
-public class CreateStudentRequest {
+import tv.codely.shared.domain.bus.command.Command;
+
+public final class CreateStudentCommand implements Command{
     private String id;
     private String name;
     private String surname;
     private String email;
 
-    public CreateStudentRequest(String id, String name, String surname, String email) {
+    public CreateStudentCommand(String id, String name, String surname, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -32,9 +34,9 @@ public class CreateStudentRequest {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CreateStudentRequest)) return false;
+        if (!(o instanceof CreateStudentCommand)) return false;
 
-        CreateStudentRequest that = (CreateStudentRequest) o;
+        CreateStudentCommand that = (CreateStudentCommand) o;
 
         return id.equals(that.id) &&
                name.equals(that.name) &&
