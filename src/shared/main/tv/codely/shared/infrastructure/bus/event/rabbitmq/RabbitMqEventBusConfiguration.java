@@ -4,6 +4,7 @@ import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import tv.codely.shared.infrastructure.bus.event.DomainEventSubscribersInformation;
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Configuration
+@Profile({"rabbitmq", "test"})
 public class RabbitMqEventBusConfiguration {
     private final DomainEventSubscribersInformation domainEventSubscribersInformation;
     private final DomainEventsInformation           domainEventsInformation;
