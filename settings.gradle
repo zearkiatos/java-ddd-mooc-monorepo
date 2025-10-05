@@ -11,3 +11,6 @@ project(':backoffice').projectDir = new File('src/backoffice')
 
 include ':app'
 project(':app').projectDir = new File('app')
+
+include ':retention'
+project(':retention').projectDir = new File('retention')
