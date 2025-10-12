@@ -68,7 +68,7 @@ public class Starter {
     private static HashMap<String, Class<?>> applications() {
         HashMap<String, Class<?>> applications = new HashMap<>();
 
-		applications.put("mooc_backend", BackofficeBackendApplication.class);
+		applications.put("mooc_backend", MoocBackendApplication.class);
         applications.put("backoffice_frontend", BackofficeFrontendApplication.class);
         applications.put("backoffice_backend", BackofficeBackendApplication.class);
 
@@ -78,7 +78,7 @@ public class Starter {
     private static HashMap<String, HashMap<String, Class<?>>> commands() {
         HashMap<String, HashMap<String, Class<?>>> commands = new HashMap<>();
 
-        commands.put("mooc_backend", BackofficeBackendApplication.commands());
+        commands.put("mooc_backend", MoocBackendApplication.commands());
         commands.put("backoffice_backend", BackofficeBackendApplication.commands());
 
         return commands;

@@ -66,11 +66,11 @@ public final class VideosCounter {
         }
         if (o == null || getClass() != o.getClass()) {
             return false;
+        }
         VideosCounter that = (VideosCounter) o;
         return id.equals(that.id) &&
                total.equals(that.total) &&
                existingVideos.equals(that.existingVideos);
-        }
     }
 
     @Override

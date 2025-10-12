@@ -1,5 +1,7 @@
 package tv.codely.mooc.videos_counter.infrastructure;
 
+import java.util.Optional;
+
 import org.springframework.context.annotation.Profile;
 import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.mooc.videos_counter.domain.VideosCounter;

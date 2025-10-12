@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
-import src.mooc.main.tv.codely.mooc.courses_counter.domain.CoursesCounter;
 import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 import tv.codely.mooc.videos_counter.domain.VideosCounter;

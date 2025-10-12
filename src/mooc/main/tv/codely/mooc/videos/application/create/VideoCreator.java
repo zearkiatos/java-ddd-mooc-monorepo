@@ -6,23 +6,23 @@ import tv.codely.mooc.videos.domain.VideoId;
 import tv.codely.mooc.videos.domain.VideoRepository;
 import tv.codely.mooc.videos.domain.VideoTitle;
 import tv.codely.shared.domain.VideoUrl;
+import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
-public final class VideoCreator {
+public class VideoCreator {
     private VideoRepository repository;
+    private final EventBus eventBus;
 
-    public VideoCreator(VideoRepository repository) {
+    public VideoCreator(VideoRepository repository, EventBus eventBus) {
         this.repository = repository;
+        this.eventBus = eventBus;
     }
 
-    public void create(CreateVideoRequest request) {
-        Video video = new Video(
-                new VideoId(request.id()),
-                new VideoTitle(request.title()),
-                new VideoDescription(request.description()),
-                new VideoUrl(request.url()));
+    public void create(VideoId id, VideoTitle title, VideoDescription description, VideoUrl url) {
+        Video video = Video.create(id, title, description, url);
 
         repository.save(video);
+        eventBus.publish(video.pullDomainEvents());
     }
 }
