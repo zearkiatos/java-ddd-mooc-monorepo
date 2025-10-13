@@ -10,9 +10,10 @@ import tv.codely.mooc.videos.application.create.VideoCreator;
 import tv.codely.mooc.videos.domain.Video;
 import tv.codely.mooc.videos.domain.VideoCreatedDomainEvent;
 import tv.codely.mooc.videos.domain.VideoCreatedDomainEventMother;
+import tv.codely.mooc.videos.domain.VideoMother;
 
 final class CreateVideoCommandHandlerShould extends VideosModuleUnitTestCase {
-    private CreateVideoCommandHnalder handler;
+    private CreateVideoCommandHandler handler;
 
     @BeforeEach
     protected void setUp() {
