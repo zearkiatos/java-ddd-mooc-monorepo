@@ -14,7 +14,7 @@ import tv.codely.mooc.videos.domain.VideoTitleMother;
 
 public final class CreateVideoCommandMother {
     public static CreateVideoCommand create(VideoId id, VideoTitle title, VideoDescription description, VideoUrl url) {
-        return new CreateVideoCommand(id.value(), title.value(), description.value(), url.value());
+        return new CreateVideoCommand(id.value(), title.value(), url.value(), description.value());
     }
 
     public static CreateVideoCommand random() {
