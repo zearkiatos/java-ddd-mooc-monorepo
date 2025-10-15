@@ -28,7 +28,7 @@ public final class FindCoursesCounterQueryHandlerShould extends CoursesCounterMo
         handler = new FindCoursesCounterQueryHandler(new CoursesCounterFinder(repository));
     }
 
-     @Test
+    @Test
     void it_should_find_an_existing_courses_counter() {
         CoursesCounter          counter  = CoursesCounterMother.random();
         FindCoursesCounterQuery query    = new FindCoursesCounterQuery();
