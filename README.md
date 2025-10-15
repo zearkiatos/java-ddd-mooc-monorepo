@@ -37,6 +37,20 @@ $ curl --location --request PUT 'http://localhost:8080/courses/da5880e1-a4bf-45b
 201
 ```
 
+* Get Course counter
+
+## Request
+```sh
+$ curl --location 'http://localhost:8080/courses-counter'
+```
+
+## Response
+```json
+{
+    "total": 2
+}
+```
+
 * Put Students
 ## Request
 ```sh
@@ -70,6 +84,22 @@ $ curl --location --request PUT 'http://localhost:8080/videos/8f51c8e9-8d9b-4e0e
 ```txt
 201
 ```
+
+* Get Video counter
+## Request
+```sh
+$ curl --location 'http://localhost:8080/videos-counter'
+```
+
+## Response
+
+```json
+{
+    "total": 1
+}
+```
+
+
 
 # RabbitMQ architecture simulator
 

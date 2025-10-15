@@ -25,6 +25,9 @@ import tv.codely.shared.infrastructure.bus.event.mysql.MySqlDomainEventsConsumer
 import tv.codely.shared.domain.UuidGenerator;
 import tv.codely.mooc.courses_counter.domain.CoursesCounterRepository;
 import tv.codely.mooc.courses_counter.application.increment.CoursesCounterIncrementer;
+import tv.codely.mooc.videos_counter.domain.VideosCounterRepository;
+import tv.codely.mooc.videos_counter.infrastructure.InMemoryVideosCounterRepository;
+import tv.codely.mooc.videos_counter.application.increment.VideosCounterIncrementer;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -58,10 +61,20 @@ public abstract class ApplicationTestCase {
    @Autowired
     protected CoursesCounterIncrementer coursesCounterIncrementer;
 
+    @Autowired
+    protected VideosCounterIncrementer videosCounterIncrementer;
+
+    @Autowired
+    protected VideosCounterRepository videosCounterRepository;
+
     @BeforeEach
     public void setUp() {
         if (coursesCounterRepository instanceof InMemoryCoursesCounterRepository) {
             ((InMemoryCoursesCounterRepository) coursesCounterRepository).clear();
+        }
+
+        if (videosCounterRepository instanceof InMemoryVideosCounterRepository) {
+            ((InMemoryVideosCounterRepository) videosCounterRepository).clear();
         }
     }
 

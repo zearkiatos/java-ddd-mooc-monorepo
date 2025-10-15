@@ -1,9 +1,11 @@
 package tv.codely.mooc.videos.domain;
 
 import java.util.Objects;
+
+import tv.codely.shared.domain.AggregateRoot;
 import tv.codely.shared.domain.VideoUrl;
 
-public final class Video {
+public final class Video extends AggregateRoot {
     private VideoId id;
     private VideoTitle title;
     private VideoDescription description;
@@ -32,6 +34,19 @@ public final class Video {
 
     public VideoUrl url() {
         return url;
+    }
+
+    public static Video create(VideoId id, VideoTitle title, VideoDescription description, VideoUrl url) {
+        Video video = new Video(id, title, description, url);
+
+        video.record(new VideoCreatedDomainEvent(
+            id.value(),
+            title.value(),
+            description.value(),
+            url.value()
+        ));
+
+        return video;
     }
 
     // Hibernate property accessors for ID conversion

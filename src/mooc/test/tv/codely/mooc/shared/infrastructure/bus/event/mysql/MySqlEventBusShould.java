@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.mockito.Mockito.when;
 
 import tv.codely.mooc.videos.domain.VideoRepository;
+import tv.codely.mooc.videos_counter.domain.VideosCounterRepository;
 import tv.codely.mooc.students.domain.StudentRepository;
 import tv.codely.mooc.courses_counter.domain.CoursesCounterRepository;
 
@@ -50,6 +51,9 @@ class MySqlEventBusShould extends MoocContextInfrastructureTestCase {
 
     @MockBean
     private VideoRepository videoRepository;
+
+    @MockBean
+    private VideosCounterRepository videosCounterRepository;
 
 
     @BeforeEach

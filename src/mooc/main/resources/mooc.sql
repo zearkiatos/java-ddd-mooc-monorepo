@@ -55,6 +55,13 @@ CREATE TABLE IF NOT EXISTS `courses_counter` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS `videos_counter` (
+  `id` CHAR(36) NOT NULL,
+  `total` INT NOT NULL,
+  `existing_videos` JSON NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS `domain_events` (
   `id` CHAR(36) NOT NULL,
   `aggregate_id` CHAR(36) NOT NULL,

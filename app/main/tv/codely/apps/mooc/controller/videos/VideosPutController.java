@@ -7,21 +7,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tv.codely.mooc.videos.application.create.CreateVideoCommand;
 import tv.codely.mooc.videos.application.create.CreateVideoRequest;
 import tv.codely.mooc.videos.application.create.VideoCreator;
+import tv.codely.shared.domain.bus.command.CommandBus;
+import tv.codely.shared.domain.bus.command.CommandNotRegisteredError;
 
 @RestController
 public final class VideosPutController {
-    private final VideoCreator creator;
+    private CommandBus bus;
 
-    public VideosPutController(VideoCreator creator) {
-        this.creator = creator;
+    public VideosPutController(CommandBus bus) {
+        this.bus = bus;
     }
 
     @PutMapping("/videos/{id}")
-    public ResponseEntity<Integer> create(@PathVariable String id, @RequestBody Request request) {
-        System.out.println("Generated video ID: " + id);
-        creator.create(new CreateVideoRequest(id, request.title(), request.description(), request.url()));
+    public ResponseEntity<Integer> create(@PathVariable String id, @RequestBody Request request) throws CommandNotRegisteredError {
+        bus.dispatch(new CreateVideoCommand(id, request.title(), request.url(), request.description()));
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
