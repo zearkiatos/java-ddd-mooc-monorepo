@@ -51,7 +51,7 @@ subprojects {
   sourceSets {
     main {
       java { srcDirs = ['main'] }
-      resources { srcDirs = ['main/resources'] }
+      resources { srcDirs = ['main/resources', 'apps/main/resources', "apps/main/tv/codely/apps/backoffice/frontend/resources"] }
     }
 
     test {
@@ -63,7 +63,7 @@ subprojects {
   dependencies {
         implementation 'org.springframework:spring-context:5.3.31'
         implementation 'org.hibernate:hibernate-core:5.4.5.Final'
-        implementation 'org.springframework:spring-orm:5.1.10.RELEASE'
+        implementation 'org.springframework:spring-orm:5.3.31'
         implementation 'org.apache.tomcat:tomcat-dbcp:8.5.100'
         implementation 'javax.xml.bind:jaxb-api:2.3.1'
         implementation 'com.sun.xml.bind:jaxb-impl:2.3.1'
