@@ -20,13 +20,17 @@ public final class CoursesGetWebController {
     }
 
     @GetMapping("/courses")
-    public ModelAndView index() throws QueryNotRegisteredError  {
+    public ModelAndView index(@ModelAttribute("inputs") HashMap<String, Serializable> inputs,
+    @ModelAttribute("errors") HashMap<String, List<String>> errors) throws QueryNotRegisteredError  {
         CoursesCounterResponse counterResponse = bus.ask(new FindCoursesCounterQuery());
 
         return new ModelAndView("pages/courses", new HashMap<String, Serializable>() {{
             put("title", "Courses");
             put("description", "Courses DinoGeek - Backoffice");
             put("courses_counter", counterResponse.total());
+            put("inputs", inputs);
+            put("errors", errors);
+            put("generated_uuid", UUID.randomUUID().toString());
         }});
     }
 }
