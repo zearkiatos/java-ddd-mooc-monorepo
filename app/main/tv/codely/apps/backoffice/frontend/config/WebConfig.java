@@ -12,32 +12,9 @@ import org.springframework.web.servlet.ViewResolver;
 
 
 @Configuration
-@EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.freeMarker();
-    }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/backoffice_frontend/public/");
     }
-
-    @Bean
-    public ViewResolver getViewResolver() {
-        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
-        resolver.setCache(false);
-        resolver.setSuffix(".ftl");
-        return resolver;
-    }
-
-    @Bean
-    public FreeMarkerConfigurer freeMarkerConfigurer() {
-        FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
-        configurer.setTemplateLoaderPath("classpath:/backoffice_frontend/templates/");
-        configurer.setDefaultEncoding("UTF-8");
-        return configurer;
-    }
-
 }

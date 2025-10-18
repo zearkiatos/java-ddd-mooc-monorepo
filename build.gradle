@@ -51,7 +51,7 @@ subprojects {
   sourceSets {
     main {
       java { srcDirs = ['main'] }
-      resources { srcDirs = ['main/resources', 'apps/main/resources', "apps/main/tv/codely/apps/backoffice/frontend/resources"] }
+      resources { srcDirs = ['main/resources', 'app/main/tv/codely/apps/backoffice/frontend/resources'] }
     }
 
     test {
@@ -115,6 +115,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter'
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.18'
+  implementation 'org.springframework.boot:spring-boot-starter-freemarker'
   runtimeOnly 'mysql:mysql-connector-java:8.0.33'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
