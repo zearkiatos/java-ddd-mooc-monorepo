@@ -1,3 +1,4 @@
+<#import "spring.ftl" as spring />
 <#include "partials/header.ftl">
 <#include "partials/footer.ftl">
 <!DOCTYPE html>

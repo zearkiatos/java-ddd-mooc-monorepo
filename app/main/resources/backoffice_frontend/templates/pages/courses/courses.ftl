@@ -1,4 +1,4 @@
-<#include "../master.ftl">
+<#include "../../master.ftl">
 
 <#macro page_title>Cursos</#macro>
 
@@ -12,5 +12,6 @@
             </p>
         </div>
     </div>
+    <#include "partials/new_course_form.ftl">
 </#macro>
 
