@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.io.Serializable;
@@ -27,10 +29,11 @@ import tv.codely.shared.infrastructure.validation.ValidatorNotExist;
 
 @Controller
 public final class CoursesPostWebController {
+    private static final Logger log = LoggerFactory.getLogger(CoursesPostWebController.class);
     private final CommandBus bus;
     private final HashMap<String, String> rules = new HashMap<String, String>() {{
-        put("title", "required|not_empty|uuid");
-        put("description", "required|not_empty|string");
+        put("id", "required|not_empty|uuid");
+        put("name", "required|not_empty|string");
         put("duration", "required|not_empty|string");
     }};
 
@@ -42,6 +45,7 @@ public final class CoursesPostWebController {
     public RedirectView index(@RequestParam HashMap<String,Serializable> request, RedirectAttributes redirectAttributes) throws Exception {
         ValidationResponse validationResponse = Validator.validate(request, rules);
 
+
         return validationResponse.hasErrors() ?
             redirectToFormWithErrors(validationResponse, request, redirectAttributes) :
             createCourse(request);
@@ -51,15 +55,27 @@ public final class CoursesPostWebController {
         attributes.addFlashAttribute("errors", validationResponse.errors());
         attributes.addFlashAttribute("request", request);
 
+        log.info("Validation errors found: {}", validationResponse.errors());
+
         return new RedirectView("/courses");
     }
 
  private RedirectView createCourse(HashMap<String, Serializable> request) throws CommandNotRegisteredError {
-        bus.dispatch(new CreateCourseCommand(
-            request.get("id").toString(),
-            request.get("name").toString(),
-            request.get("duration").toString()
-        ));
+        String id = request.get("id").toString();
+        try {
+            bus.dispatch(new CreateCourseCommand(
+                id,
+                request.get("name").toString(),
+                request.get("duration").toString()
+            ));
+            log.info("Course created successfully id={}", id);
+        } catch (CommandNotRegisteredError e) {
+            log.error("Command not registered while creating course id={}", id, e);
+            throw e;
+        } catch (RuntimeException e) {
+            log.error("Unexpected error while creating course id={}", id, e);
+            throw e;
+        }
 
         return new RedirectView("/courses");
     }
