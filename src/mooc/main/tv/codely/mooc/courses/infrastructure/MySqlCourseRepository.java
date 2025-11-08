@@ -12,11 +12,12 @@ import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
 @ServiceInjectable
+@Transactional("mooc-transaction_manager")
 @Profile("local")
 public class MySqlCourseRepository extends HibernateRepository<Course> implements CourseRepository {
     private SessionFactory sessionFactory;
 
-    public MySqlCourseRepository(SessionFactory sessionFactory) {
+    public MySqlCourseRepository(@Qualifier("mooc-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory, Course.class);
     }
     @Override
