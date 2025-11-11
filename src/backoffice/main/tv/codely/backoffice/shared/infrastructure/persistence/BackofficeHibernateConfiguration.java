@@ -13,9 +13,6 @@ import tv.codely.shared.infrastructure.persistence.hibernate.HibernateConfigurat
 import tv.codely.shared.infrastructure.config.Parameter;
 import tv.codely.shared.infrastructure.config.ParameterNotExist;
 
-
-
-
 @Configuration
 @EnableTransactionManagement
 public class BackofficeHibernateConfiguration {
