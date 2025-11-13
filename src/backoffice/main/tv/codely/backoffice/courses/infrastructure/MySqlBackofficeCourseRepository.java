@@ -1,4 +1,4 @@
-package tv.codely.backoffice.courses.infrastructure.persistence;
+package src.backoffice.main.tv.codely.backoffice.courses.infrastructure;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
