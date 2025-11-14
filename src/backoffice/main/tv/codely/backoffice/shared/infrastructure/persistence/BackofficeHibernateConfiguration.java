@@ -4,12 +4,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import javax.sql.DataSource;
 
 import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
 
-import tv.codely.shared.infrastructure.persistence.hibernate.HibernateConfigurationFactory;
+import tv.codely.shared.infrastructure.hibernate.HibernateConfigurationFactory;
 import tv.codely.shared.infrastructure.config.Parameter;
 import tv.codely.shared.infrastructure.config.ParameterNotExist;
 

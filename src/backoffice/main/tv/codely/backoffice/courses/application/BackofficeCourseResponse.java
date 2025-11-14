@@ -3,7 +3,7 @@ package tv.codely.backoffice.courses.application;
 import tv.codely.shared.domain.bus.query.Response;
 import tv.codely.backoffice.courses.domain.BackofficeCourse;
 
-public final class BackofficeCourseResponse  implements Response {
+public final class BackofficeCourseResponse implements Response {
     private final String id;
     private final String name;
     private final String duration;

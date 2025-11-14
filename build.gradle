@@ -127,5 +127,6 @@ dependencies {
 
   implementation project(":shared")
   implementation project(":mooc")
+  implementation project(":backoffice")
   testImplementation project(":shared").sourceSets.test.output
 }

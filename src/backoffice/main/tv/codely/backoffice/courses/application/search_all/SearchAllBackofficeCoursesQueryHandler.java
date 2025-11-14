@@ -6,7 +6,7 @@ import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.backoffice.courses.application.BackofficeCoursesResponse;
 
 @ServiceInjectable
-public final class SearchAllBackofficeCoursesQueryHandler implements QueryHandler<SearchAllBackofficeCoursesQuery> {
+public final class SearchAllBackofficeCoursesQueryHandler implements QueryHandler<SearchAllBackofficeCoursesQuery, BackofficeCoursesResponse> {
     private final AllBackofficeCoursesSearcher searcher;
 
     public SearchAllBackofficeCoursesQueryHandler(AllBackofficeCoursesSearcher searcher) {

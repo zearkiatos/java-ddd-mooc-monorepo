@@ -7,7 +7,7 @@ import java.util.List;
 
 import tv.codely.backoffice.courses.domain.BackofficeCourse;
 import tv.codely.backoffice.courses.domain.BackofficeCourseRepository;
-import tv.codely.shared.infrastructure.persistence.hibernate.HibernateRepository;
+import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
