@@ -1,4 +1,4 @@
-package src.backoffice.main.tv.codely.backoffice.courses.infrastructure;
+package tv.codely.backoffice.courses.infrastructure;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +12,7 @@ import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
 @Transactional("backoffice-transaction_manager")
-public final class MySqlBackofficeCourseRepository extends HibernateRepository<BackofficeCourse> implements BackofficeCourseRepository {
+public class MySqlBackofficeCourseRepository extends HibernateRepository<BackofficeCourse> implements BackofficeCourseRepository {
     public MySqlBackofficeCourseRepository(@Qualifier("backoffice-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory, BackofficeCourse.class);
     }

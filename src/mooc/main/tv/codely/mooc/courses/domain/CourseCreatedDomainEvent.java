@@ -30,6 +30,14 @@ public final class CourseCreatedDomainEvent extends DomainEvent<CourseCreatedDom
         this.duration = duration;
     }
 
+    public String name() {
+        return name;
+    }
+
+    public String duration() {
+        return duration;
+    }
+
     public CourseCreatedDomainEvent() {
         super(null);
 

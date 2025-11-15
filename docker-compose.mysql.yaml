@@ -13,6 +13,23 @@ services:
         - "127.0.0.1:3307:3306"  # Bind only to localhost for security
       networks:
         localnetwork:
+  mysql-backoffice-db:
+      env_file:
+        - mysql.env
+      environment:
+        MYSQL_DATABASE: backoffice
+        MYSQL_USER: backoffice_user
+      build:
+        context: .
+        dockerfile: mysql.Dockerfile
+      container_name:  mysql-backoffice-db
+      restart: unless-stopped
+      volumes:
+        - ./data/mysql-backoffice:/var/lib/mysql
+      ports:
+        - "127.0.0.1:3308:3306"  # Bind only to localhost for security
+      networks:
+        localnetwork:
 
 networks:
   localnetwork:

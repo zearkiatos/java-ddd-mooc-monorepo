@@ -27,12 +27,12 @@ public class BackofficeHibernateConfiguration {
         this.config = config;
     }
 
-    @Bean("backoffice-platform_transaction_manager")
+    @Bean("backoffice-transaction_manager")
     public PlatformTransactionManager hibernateTransactionManager() throws IOException, ParameterNotExist {
         return factory.hibernateTransactionManager(sessionFactory());
     }
 
-    @Bean("backoffice-local_session_factory")
+    @Bean("backoffice-session_factory")
     public LocalSessionFactoryBean sessionFactory() throws IOException, ParameterNotExist {
         return factory.sessionFactory(CONTEXT_NAME, dataSource());
     }

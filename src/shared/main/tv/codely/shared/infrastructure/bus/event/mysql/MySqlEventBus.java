@@ -5,25 +5,21 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import org.hibernate.SessionFactory;
-import org.springframework.context.annotation.Profile;
 import org.hibernate.query.NativeQuery;
-import org.springframework.context.annotation.Primary;
 import org.springframework.amqp.AmqpException;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.infrastructure.bus.event.inMemory.InMemoryEventBus;
 import tv.codely.shared.domain.Utils;
 import tv.codely.shared.domain.ServiceInjectable;
-
-
-@Profile({"local"})
 @ServiceInjectable
 public final class MySqlEventBus implements EventBus {
     private static SessionFactory sessionFactory;
     private final InMemoryEventBus failoverPublisher;
 
-    public MySqlEventBus(SessionFactory sessionFactory) {
+    public MySqlEventBus(@Qualifier("mooc-session_factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         this.failoverPublisher = new InMemoryEventBus();
     }

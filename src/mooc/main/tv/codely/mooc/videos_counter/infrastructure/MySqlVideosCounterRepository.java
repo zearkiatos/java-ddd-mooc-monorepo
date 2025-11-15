@@ -2,9 +2,8 @@ package tv.codely.mooc.videos_counter.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.context.annotation.Profile;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.hibernate.SessionFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -17,9 +16,9 @@ import tv.codely.mooc.videos_counter.domain.VideosCounterRepository;
 
 
 @ServiceInjectable
-@Profile("local")
+@Transactional("mooc-transaction_manager")
 public class MySqlVideosCounterRepository extends HibernateRepository<VideosCounter> implements VideosCounterRepository {
-    public MySqlVideosCounterRepository(SessionFactory sessionFactory) {
+    public MySqlVideosCounterRepository(@Qualifier("mooc-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory, VideosCounter.class);
     }
 

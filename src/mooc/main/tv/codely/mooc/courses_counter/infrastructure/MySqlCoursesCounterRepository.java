@@ -3,7 +3,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.SessionFactory;
-import org.springframework.context.annotation.Profile;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Qualifier;
 import tv.codely.mooc.courses_counter.domain.CoursesCounter;
 import tv.codely.mooc.courses_counter.domain.CoursesCounterRepository;
 import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
@@ -16,9 +17,9 @@ import javax.persistence.criteria.CriteriaQuery;
 
 
 @ServiceInjectable
-@Profile("local")
+@Transactional("mooc-transaction_manager")
 public class MySqlCoursesCounterRepository extends HibernateRepository<CoursesCounter> implements CoursesCounterRepository {
-    public MySqlCoursesCounterRepository(SessionFactory sessionFactory) {
+    public MySqlCoursesCounterRepository(@Qualifier("mooc-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory, CoursesCounter.class);
     }
 

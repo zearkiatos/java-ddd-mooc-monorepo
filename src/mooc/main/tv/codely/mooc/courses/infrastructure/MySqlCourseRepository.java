@@ -14,7 +14,6 @@ import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
 @ServiceInjectable
 @Transactional("mooc-transaction_manager")
-@Profile("local")
 public class MySqlCourseRepository extends HibernateRepository<Course> implements CourseRepository {
     private SessionFactory sessionFactory;
 
