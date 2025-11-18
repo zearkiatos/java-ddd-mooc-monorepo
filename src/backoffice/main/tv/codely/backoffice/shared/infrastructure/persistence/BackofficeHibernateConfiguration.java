@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 import java.io.IOException;
@@ -28,6 +29,7 @@ public class BackofficeHibernateConfiguration {
     }
 
     @Bean("backoffice-transaction_manager")
+    @Primary
     public PlatformTransactionManager hibernateTransactionManager() throws IOException, ParameterNotExist {
         return factory.hibernateTransactionManager(sessionFactory());
     }
