@@ -1,6 +1,8 @@
 package tv.codely.backoffice.courses.application.create;
 
 import tv.codely.shared.domain.ServiceInjectable;
+import tv.codely.backoffice.courses.domain.BackofficeCourse;
+import tv.codely.backoffice.courses.domain.BackofficeCourseRepository;
 
 @ServiceInjectable
 public final class BackofficeCourseCreator {

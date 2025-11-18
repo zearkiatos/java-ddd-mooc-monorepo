@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 
 import javax.transaction.Transactional;
 import org.hibernate.SessionFactory;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
@@ -22,7 +22,6 @@ import tv.codely.shared.infrastructure.bus.event.spring.SpringApplicationEventBu
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
 
 @ServiceInjectable
-@Profile({"local", "test"})
 public class MySqlDomainEventsConsumer {
     private final SessionFactory sessionFactory;
     private final DomainEventsInformation domainEventsInformation;
@@ -31,7 +30,7 @@ public class MySqlDomainEventsConsumer {
     private Boolean isStopped = false;
 
     public MySqlDomainEventsConsumer(
-            SessionFactory sessionFactory,
+            @Qualifier("mooc-session_factory") SessionFactory sessionFactory,
             DomainEventsInformation domainEventsInformation,
             SpringApplicationEventBus bus) {
         this.sessionFactory = sessionFactory;

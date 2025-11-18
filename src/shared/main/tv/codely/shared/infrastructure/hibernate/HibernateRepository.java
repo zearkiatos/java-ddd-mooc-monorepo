@@ -4,6 +4,10 @@ import org.hibernate.SessionFactory;
 import tv.codely.shared.domain.Identifier;
 
 import javax.transaction.Transactional;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -23,5 +27,13 @@ public abstract class HibernateRepository<T> {
 
     protected Optional<T> byId(Identifier id) {
         return Optional.ofNullable(sessionFactory.getCurrentSession().get(aggregateClass, id.value()));
+    }
+
+    protected List<T> all() {
+        CriteriaBuilder  builder  = sessionFactory.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(aggregateClass);
+        criteria.from(aggregateClass);
+
+        return sessionFactory.getCurrentSession().createQuery(criteria).getResultList();
     }
 }

@@ -4,12 +4,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.context.annotation.Primary;
+import javax.sql.DataSource;
 
 import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
 
-import tv.codely.shared.infrastructure.persistence.hibernate.HibernateConfigurationFactory;
+import tv.codely.shared.infrastructure.hibernate.HibernateConfigurationFactory;
 import tv.codely.shared.infrastructure.config.Parameter;
 import tv.codely.shared.infrastructure.config.ParameterNotExist;
 
@@ -25,12 +28,13 @@ public class BackofficeHibernateConfiguration {
         this.config = config;
     }
 
-    @Bean("backoffice-platform_transaction_manager")
+    @Bean("backoffice-transaction_manager")
+    @Primary
     public PlatformTransactionManager hibernateTransactionManager() throws IOException, ParameterNotExist {
         return factory.hibernateTransactionManager(sessionFactory());
     }
 
-    @Bean("backoffice-local_session_factory")
+    @Bean("backoffice-session_factory")
     public LocalSessionFactoryBean sessionFactory() throws IOException, ParameterNotExist {
         return factory.sessionFactory(CONTEXT_NAME, dataSource());
     }

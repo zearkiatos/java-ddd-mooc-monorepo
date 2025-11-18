@@ -2,9 +2,8 @@ package tv.codely.mooc.students.infrastructure;
 
 import java.util.Optional;
 import org.hibernate.SessionFactory;
-import javax.transaction.Transactional;
-import org.springframework.context.annotation.Profile;
-
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Qualifier;
 import tv.codely.mooc.students.domain.Student;
 import tv.codely.mooc.students.domain.StudentId;
 import tv.codely.shared.domain.ServiceInjectable;
@@ -12,10 +11,10 @@ import tv.codely.mooc.students.domain.StudentRepository;
 import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
 @ServiceInjectable
-@Profile("local")
+@Transactional("mooc-transaction_manager")
 public class MySqlStudentRepository extends HibernateRepository<Student> implements StudentRepository  {
 
-    public MySqlStudentRepository(SessionFactory sessionFactory) {
+    public MySqlStudentRepository(@Qualifier("mooc-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory, Student.class);
     }
     @Override

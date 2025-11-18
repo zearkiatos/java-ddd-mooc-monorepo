@@ -2,8 +2,8 @@ package tv.codely.mooc.steps.infrastructure;
 
 import java.util.Optional;
 import org.hibernate.SessionFactory;
-import javax.transaction.Transactional;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import tv.codely.mooc.steps.domain.Step;
 import tv.codely.mooc.steps.domain.StepId;
@@ -12,10 +12,10 @@ import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 import tv.codely.mooc.steps.domain.StepRepository;
 
 @ServiceInjectable
-@Profile("local")
+@Transactional("mooc-transaction_manager")
 public class MySqlStepRepository extends HibernateRepository<Step> implements StepRepository {
 
-    public MySqlStepRepository(SessionFactory sessionFactory) {
+    public MySqlStepRepository(@Qualifier("mooc-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory, Step.class);
     }
 
