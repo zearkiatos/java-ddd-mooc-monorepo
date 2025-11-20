@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="tv.codely.backoffice.videos.domain.BackofficeVideo" table="videos">
+        <id name="id" column="id" access="field" length="36" />
+        <property name="title" column="title" type="string" access="field" />
+        <property name="description" column="description" type="string" access="field" />
+        <property name="url" column="url" type="string" access="field" />
+    </class>
+</hibernate-mapping>
