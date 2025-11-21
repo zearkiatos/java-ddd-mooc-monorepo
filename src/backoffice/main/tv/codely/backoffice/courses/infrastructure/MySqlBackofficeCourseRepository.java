@@ -3,12 +3,14 @@ package tv.codely.backoffice.courses.infrastructure;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 import tv.codely.backoffice.courses.domain.BackofficeCourse;
 import tv.codely.backoffice.courses.domain.BackofficeCourseRepository;
 import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 import tv.codely.shared.domain.ServiceInjectable;
+import tv.codely.shared.domain.criteria.Criteria;
 
 @ServiceInjectable
 @Transactional("backoffice-transaction_manager")
@@ -25,5 +27,10 @@ public class MySqlBackofficeCourseRepository extends HibernateRepository<Backoff
     @Override
     public List<BackofficeCourse> searchAll() {
         return all();
+    }
+
+    @Override
+    public List<BackofficeCourse> matching(Criteria criteria) {
+        return byCriteria(criteria);
     }
 }
