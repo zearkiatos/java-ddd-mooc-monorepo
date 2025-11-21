@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +27,14 @@ public final class ApiCoursesGetController {
 
     @GetMapping("/api/courses")
     public List<HashMap<String, String>> index(@RequestParam HashMap<String, Serializable> params) throws QueryNotRegisteredError {
-        BackofficeCoursesResponse courses = bus.ask(new SearchAllBackofficeCoursesQuery(
+        BackofficeCoursesResponse courses = bus.ask(
             new SearchBackofficeCoursesByCriteriaQuery(
                 parseFilters(params),
                 Optional.ofNullable((String) params.get("order_by")),
                 Optional.ofNullable((String) params.get("order")),
                 Optional.ofNullable((Integer) params.get("limit")),
                 Optional.ofNullable((Integer) params.get("offset"))
-        )));
+        ));
 
         return courses.courses().stream().map(response -> new HashMap<String,String>() {{
             put("id", response.id());

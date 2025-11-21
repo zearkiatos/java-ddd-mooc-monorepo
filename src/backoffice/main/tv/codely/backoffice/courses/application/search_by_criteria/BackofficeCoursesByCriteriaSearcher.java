@@ -9,7 +9,7 @@ import tv.codely.shared.domain.criteria.Criteria;
 import tv.codely.shared.domain.criteria.Filters;
 import tv.codely.shared.domain.criteria.Order;
 import tv.codely.backoffice.courses.domain.BackofficeCourseRepository;
-import tv.codely.shared.domain.injectable.ServiceInjectable;
+import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
 public final class BackofficeCoursesByCriteriaSearcher {

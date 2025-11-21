@@ -10,12 +10,14 @@ import java.util.Optional;
 
 import tv.codely.shared.domain.Identifier;
 import tv.codely.shared.domain.criteria.Criteria;
+import tv.codely.shared.infrastructure.hibernate.converters.HibernateCriteriaConverter;
+
 
 @Transactional
 public abstract class HibernateRepository<T> {
     protected final SessionFactory sessionFactory;
     protected final Class<T>       aggregateClass;
-    protected final HibernateCriteriaConverter criteriaConverter;
+    protected final HibernateCriteriaConverter<T> criteriaConverter;
 
     public HibernateRepository(SessionFactory sessionFactory, Class<T> aggregateClass) {
         this.sessionFactory = sessionFactory;

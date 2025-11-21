@@ -1,6 +1,8 @@
 package tv.codely.shared.domain.criteria;
 
-public class OrderBy {
+import tv.codely.shared.domain.StringValueObject;
+
+public final class OrderBy extends StringValueObject {
     public OrderBy(String value) {
         super(value);
     }
