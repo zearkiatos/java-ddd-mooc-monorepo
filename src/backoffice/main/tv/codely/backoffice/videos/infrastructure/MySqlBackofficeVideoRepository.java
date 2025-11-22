@@ -3,8 +3,9 @@ package tv.codely.backoffice.videos.infrastructure;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
+
+import tv.codely.shared.domain.criteria.Criteria;
 
 import tv.codely.backoffice.videos.domain.BackofficeVideo;
 import tv.codely.backoffice.videos.domain.BackofficeVideoRepository;
@@ -27,4 +28,9 @@ public class MySqlBackofficeVideoRepository extends HibernateRepository<Backoffi
     public List<BackofficeVideo> searchAll() {
         return all();
     }
+
+    @Override
+    public List<BackofficeVideo> matching(Criteria criteria) {
+        return byCriteria(criteria);
+    };
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import tv.codely.shared.domain.bus.query.Response;
 
 public final class BackofficeCoursesResponse implements Response{
-        private final List<BackofficeCourseResponse> courses;
+    private final List<BackofficeCourseResponse> courses;
 
     public BackofficeCoursesResponse(List<BackofficeCourseResponse> courses) {
         this.courses = courses;
