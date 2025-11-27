@@ -30,6 +30,18 @@ services:
         - "127.0.0.1:3308:3306"  # Bind only to localhost for security
       networks:
         localnetwork:
+  backoffice_elasticsearch:
+    container_name: backoffice-elasticsearch-local
+    image: 'elasticsearch:6.8.4'
+    platform: linux/amd64
+    restart: unless-stopped
+    ports:
+      - "9300:9300"
+      - "9200:9200"
+    networks:
+      localnetwork:
+    environment:
+      - discovery.type=single-node
 
 networks:
   localnetwork:

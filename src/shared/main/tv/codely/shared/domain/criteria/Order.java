@@ -31,4 +31,8 @@ public final class Order {
     public boolean hasOrder() {
         return !orderType.isNone();
     }
+
+    public String serialize() {
+        return String.format("%s.%s", orderBy.value(), orderType.value());
+    }
 }

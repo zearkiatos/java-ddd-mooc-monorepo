@@ -125,7 +125,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-freemarker'
   runtimeOnly 'mysql:mysql-connector-java:8.0.33'
 
-  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.5'
   testImplementation 'org.mockito:mockito-core:4.11.0'
   testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
   testImplementation 'net.datafaker:datafaker:1.9.0'

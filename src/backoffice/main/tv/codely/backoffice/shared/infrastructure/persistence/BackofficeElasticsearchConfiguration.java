@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import javax.annotation.Resource;
+import org.springframework.core.io.Resource;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.omg.CORBA.Request;
+import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.indices.GetIndexRequest;
 

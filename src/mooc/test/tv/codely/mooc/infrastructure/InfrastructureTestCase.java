@@ -1,4 +1,4 @@
-package src.mooc.test.tv.codely.mooc.infrastructure;
+package tv.codely.mooc.infrastructure;
 public abstract class InfrastructureTestCase {
 
 }

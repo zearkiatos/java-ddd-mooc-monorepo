@@ -5,7 +5,7 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
-import src.shared.main.tv.codely.shared.domain.criteria.Criteria;
+import tv.codely.shared.domain.criteria.Criteria;
 
 import java.io.IOException;
 import java.io.Serializable;

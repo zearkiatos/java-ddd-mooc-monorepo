@@ -18,4 +18,8 @@ public final class Filters {
     public List<Filter> filters() {
         return filters;
     }
+
+    public String serialize() {
+        return filters.stream().map(Filter::serialize).collect(Collectors.joining("^"));
+    }
 }
