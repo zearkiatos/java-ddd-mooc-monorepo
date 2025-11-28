@@ -32,6 +32,10 @@ public final class Order {
         return !orderType.isNone();
     }
 
+    public static Order asc(String orderBy) {
+        return new Order(new OrderBy(orderBy), OrderType.ASC);
+    }
+
     public String serialize() {
         return String.format("%s.%s", orderBy.value(), orderType.value());
     }

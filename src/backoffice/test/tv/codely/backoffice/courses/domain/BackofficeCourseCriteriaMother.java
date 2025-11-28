@@ -5,6 +5,7 @@ import java.util.Arrays;
 import tv.codely.shared.domain.criteria.Criteria;
 import tv.codely.shared.domain.criteria.Filters;
 import tv.codely.shared.domain.criteria.Order;
+import tv.codely.shared.domain.criteria.Filter;
 
 public final class BackofficeCourseCriteriaMother {
       public static Criteria nameAndDurationContains(String name, String duration) {

@@ -16,6 +16,7 @@ import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchRepository;
 import tv.codely.shared.domain.ServiceInjectable;
 import tv.codely.backoffice.BackofficeContextInfrastructureTestCase;
 import tv.codely.backoffice.courses.domain.BackofficeCourseMother;
+import tv.codely.backoffice.courses.domain.BackofficeCourseCriteriaMother;
 
 final class ElasticsearchBackofficeCourseRepositoryShould extends BackofficeContextInfrastructureTestCase {
 
@@ -29,7 +30,7 @@ final class ElasticsearchBackofficeCourseRepositoryShould extends BackofficeCont
 
     @Test
     void save_a_course() {
-        repository(BackofficeCourseMother.random());
+        repository.save(BackofficeCourseMother.random());
     }
 
     @Test

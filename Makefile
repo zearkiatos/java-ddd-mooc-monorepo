@@ -10,7 +10,7 @@ rebuild:
 
 test:
 	make docker-test-up
-	sleep 5
+	sleep 15
 	export SPRING_PROFILES_ACTIVE=test
 	@./gradlew check --warning-mode all
 	make docker-test-down
@@ -62,8 +62,8 @@ ifeq ($(strip $(APP)),)
 endif
 	@echo "🚀 Starting application with APP=$(APP)"
 	make docker-dependencies-up
-	sleep 5
+	sleep 15
 # 	docker exec -t mysql sh /docker/mysql-entrypoint.sh -d
 	make run APP='$(APP)'
-	sleep 5
+	sleep 15
 	make docker-dependencies-down

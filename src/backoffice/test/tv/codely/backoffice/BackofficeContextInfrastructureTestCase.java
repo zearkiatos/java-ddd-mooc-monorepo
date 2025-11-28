@@ -4,9 +4,9 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import tv.codely.backoffice.BackofficeFrontendApplication;
+import tv.codely.apps.backoffice.frontend.BackofficeFrontendApplication;
 import tv.codely.shared.infrastructure.InfrastructureTestCase;
-import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchEnvironmentArranger;
+import tv.codely.backoffice.courses.ElasticsearchEnvironmentArranger;
 
 
 @ContextConfiguration(classes = BackofficeFrontendApplication.class)
