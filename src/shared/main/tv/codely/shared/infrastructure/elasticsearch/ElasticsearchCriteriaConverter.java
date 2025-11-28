@@ -3,7 +3,7 @@ package tv.codely.shared.infrastructure.elasticsearch;
 import java.util.HashMap;
 import java.util.function.Function;
 
-import javax.swing.SortOrder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;

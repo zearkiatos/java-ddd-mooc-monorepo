@@ -3,6 +3,9 @@ package tv.codely.shared.infrastructure.elasticsearch;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -38,5 +41,9 @@ public final class ElasticsearchClient {
 
     public String indexFor(String moduleName) {
         return String.format("%s_%s", indexPrefix(), moduleName);
+    }
+
+    public void delete(String index) throws IOException {
+        highLevelClient.indices().delete(new DeleteIndexRequest(index), RequestOptions.DEFAULT);
     }
 }

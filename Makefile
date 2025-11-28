@@ -10,7 +10,7 @@ rebuild:
 
 test:
 	make docker-test-up
-	sleep 5
+	sleep 15
 	export SPRING_PROFILES_ACTIVE=test
 	@./gradlew check --warning-mode all
 	make docker-test-down
@@ -24,17 +24,17 @@ set-env:
 install-env:
 	sdk env install
 
-docker-mysql-up:
-	docker compose -f docker-compose.mysql.yaml up --build -d
+docker-dependencies-up:
+	docker compose -f docker-compose.yaml up --build -d
 
-docker-mysql-down:
-	docker compose -f docker-compose.mysql.yaml down
+docker-dependencies-down:
+	docker compose -f docker-compose.yaml down
 
-podman-mysql-up:
-	podman compose -f docker-compose.mysql.yaml up --build -d
+podman-dependencies-up:
+	podman compose -f docker-compose.yaml up --build -d
 
-podman-mysql-down:
-	podman compose -f docker-compose.mysql.yaml down
+podman-dependencies-down:
+	podman compose -f docker-compose.yaml down
 
 docker-test-up:
 	docker compose -f docker-compose.test.yaml up --build -d
@@ -61,10 +61,9 @@ ifeq ($(strip $(APP)),)
 	@exit 1
 endif
 	@echo "🚀 Starting application with APP=$(APP)"
-	make docker-mysql-up
-	sleep 5
+	make docker-dependencies-up
+	sleep 15
 # 	docker exec -t mysql sh /docker/mysql-entrypoint.sh -d
 	make run APP='$(APP)'
-	sleep 5
-	make docker-mysql-down
-
+	sleep 15
+	make docker-dependencies-down
