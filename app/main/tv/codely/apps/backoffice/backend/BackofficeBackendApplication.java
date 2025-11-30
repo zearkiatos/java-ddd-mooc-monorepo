@@ -14,7 +14,7 @@ import tv.codely.shared.domain.ServiceInjectable;
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ComponentScan(
     includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = ServiceInjectable.class),
-    value = {"tv.codely.shared", "tv.codely.backoffice", "tv.codely.apps.backoffice"}
+    value = {"tv.codely.shared", "tv.codely.backoffice", "tv.codely.mooc", "tv.codely.apps.backoffice.backend"}
 )
 public class BackofficeBackendApplication {
     public static HashMap<String, Class<?>> commands() {

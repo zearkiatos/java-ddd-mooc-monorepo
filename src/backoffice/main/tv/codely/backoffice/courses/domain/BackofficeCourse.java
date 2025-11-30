@@ -35,8 +35,8 @@ public final class BackofficeCourse {
     public HashMap<String, Serializable> toPrimitives() {
         return new HashMap<String, Serializable>() {{
             put("id", id);
-            put("name", name);
-            put("duration", duration);
+            put("name", name.toString());
+            put("duration", duration.toString());
         }};
     }
 

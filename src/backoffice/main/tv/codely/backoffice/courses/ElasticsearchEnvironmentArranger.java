@@ -3,6 +3,7 @@ package tv.codely.backoffice.courses;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.elasticsearch.client.Request;
 import org.springframework.core.io.Resource;
@@ -12,6 +13,7 @@ import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchClient;
 import tv.codely.shared.domain.ServiceInjectable;
 
 @ServiceInjectable
+@Qualifier("backofficeElasticsearchEnvironmentArranger")
 public final class ElasticsearchEnvironmentArranger {
     ResourcePatternResolver resourceResolver;
     ElasticsearchClient     client;
