@@ -8,7 +8,7 @@ import tv.codely.apps.backoffice.frontend.BackofficeFrontendApplication;
 import tv.codely.apps.shared.controller.ApplicationTestCase;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = BackofficeFrontendApplication.class)
+@ContextConfiguration(classes = MoocFrontendApplication.class)
 @ActiveProfiles("test")
 public abstract class BackofficeRequestTestCase extends ApplicationTestCase {
 }
