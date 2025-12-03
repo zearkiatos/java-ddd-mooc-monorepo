@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import tv.codely.apps.backoffice.frontend.BackofficeFrontendApplication;
 import tv.codely.apps.backoffice.backend.BackofficeBackendApplication;
+import tv.codely.apps.mooc.frontend.MoocFrontendApplication;
 import tv.codely.apps.mooc.backend.MoocBackendApplication;
 import tv.codely.shared.infrastructure.cli.ConsoleCommand;
 
@@ -69,6 +70,7 @@ public class Starter {
         HashMap<String, Class<?>> applications = new HashMap<>();
 
 		applications.put("mooc_backend", MoocBackendApplication.class);
+        applications.put("mooc_frontend", MoocFrontendApplication.class);
         applications.put("backoffice_frontend", BackofficeFrontendApplication.class);
         applications.put("backoffice_backend", BackofficeBackendApplication.class);
 

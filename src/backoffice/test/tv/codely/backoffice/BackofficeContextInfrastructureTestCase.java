@@ -9,7 +9,7 @@ import tv.codely.shared.infrastructure.InfrastructureTestCase;
 import tv.codely.backoffice.courses.ElasticsearchEnvironmentArranger;
 
 
-@ContextConfiguration(classes = BackofficeFrontendApplication.class)
+@ContextConfiguration(classes = MoocFrontendApplication.class)
 @SpringBootTest
 public abstract class BackofficeContextInfrastructureTestCase  extends InfrastructureTestCase {
     @Autowired
