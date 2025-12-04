@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.CacheControl;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +34,7 @@ public final class CoursesGetController {
     }
 
     @GetMapping("/courses")
-    public List<HashMap<String, String>> index(@RequestParam HashMap<String, Serializable> params) throws QueryNotRegisteredError {
+    public ResponseEntity index(@RequestParam HashMap<String, Serializable> params) throws QueryNotRegisteredError {
         BackofficeCoursesResponse courses = bus.ask(
             new SearchBackofficeCoursesByCriteriaQuery(
                 parseFilters(params),
@@ -40,11 +44,13 @@ public final class CoursesGetController {
                 Optional.ofNullable((Integer) params.get("offset"))
         ));
 
-        return courses.courses().stream().map(response -> new HashMap<String,String>() {{
+        return ResponseEntity.ok()
+            .eTag("MD5")
+            .cacheControl(CacheControl.maxAge(10, TimeUnit.DAYS)).body(courses.courses().stream().map(response -> new HashMap<String,String>() {{
             put("id", response.id());
             put("name", response.name());
             put("duration", response.duration());
-        }}).collect(Collectors.toList());
+        }}).collect(Collectors.toList()));
     }
 
      private List<HashMap<String, String>> parseFilters(HashMap<String, Serializable> params) {
