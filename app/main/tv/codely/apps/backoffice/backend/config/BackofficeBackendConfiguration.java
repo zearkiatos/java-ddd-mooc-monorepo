@@ -3,6 +3,7 @@ package tv.codely.apps.backoffice.backend.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 
 
 @Configuration
