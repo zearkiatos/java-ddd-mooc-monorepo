@@ -13,10 +13,12 @@ import java.util.Base64;
 
 
 public final class BasicHttpAuthMiddleware implements Filter {
-    private final HashMap<String, String> validUsers = new HashMap<String, String>() {{
-        put("admin", "admin123");
-        put("user", "user123");
-    }};
+
+    private final CommandBus bus;
+
+    public BasicHttpAuthMiddleware(CommandBus bus) {
+        this.bus = bus;
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
