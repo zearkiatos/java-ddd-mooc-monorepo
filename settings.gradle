@@ -14,3 +14,6 @@ project(':app').projectDir = new File('app')
 
 include ':retention'
 project(':retention').projectDir = new File('retention')
+
+include ':analytics'
+project(':analytics').projectDir = new File('src/analytics')
